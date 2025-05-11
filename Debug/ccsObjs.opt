@@ -1,0 +1,11 @@
+"./empty.o"
+"./ti_msp_dl_config.o"
+"./startup_mspm0g350x_ticlang.o"
+"./Driver/UART.o"
+"./Driver/motor.o"
+"./Driver/motor_QEI.o"
+"./Driver/pid.o"
+"./Driver/task.o"
+-l"./device_linker.cmd"
+-ldevice.cmd.genlibs
+-llibc.a
