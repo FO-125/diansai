@@ -76,7 +76,8 @@ Driver/pid.o: ../Driver/pid.c ../Driver/lib.h \
  D:/APP/TI/mspm0_sdk_2_04_00_06/source/ti/driverlib/m0p/dl_interrupt.h \
  D:/APP/TI/mspm0_sdk_2_04_00_06/source/ti/driverlib/m0p/dl_systick.h \
  ../Driver/pid.h ../Driver/motor.h ../Driver/UART.h \
- ../Driver/motor_QEI.h
+ ../Driver/motor_QEI.h ../Driver/LED.h ../Driver/Beep.h \
+ ../Driver/XunJi.h
 ../Driver/lib.h:
 ti_msp_dl_config.h:
 D:/APP/TI/mspm0_sdk_2_04_00_06/source/ti/devices/msp/msp.h:
@@ -156,3 +157,6 @@ D:/APP/TI/mspm0_sdk_2_04_00_06/source/ti/driverlib/m0p/dl_systick.h:
 ../Driver/motor.h:
 ../Driver/UART.h:
 ../Driver/motor_QEI.h:
+../Driver/LED.h:
+../Driver/Beep.h:
+../Driver/XunJi.h:

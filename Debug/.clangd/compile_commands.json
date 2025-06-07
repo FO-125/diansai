@@ -2,17 +2,17 @@
    {
       "directory" : "C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Debug",
       "command"   : "clang++ -D__MSPM0G3505__ -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang\" -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Driver\" -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Debug\" -I\"D:/APP/TI/mspm0_sdk_2_04_00_06/source/third_party/CMSIS/Core/Include\" -I\"D:/APP/TI/mspm0_sdk_2_04_00_06/source\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/c++/v1\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/lib/clang/18/include\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/c\" -xc",
-      "file"      : "C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/empty.c"
-   },
-   {
-      "directory" : "C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Debug",
-      "command"   : "clang++ -D__MSPM0G3505__ -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang\" -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Driver\" -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Debug\" -I\"D:/APP/TI/mspm0_sdk_2_04_00_06/source/third_party/CMSIS/Core/Include\" -I\"D:/APP/TI/mspm0_sdk_2_04_00_06/source\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/c++/v1\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/lib/clang/18/include\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/c\" -xc",
-      "file"      : "C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Driver/motor_QEI.c"
+      "file"      : "C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Driver/UART.c"
    },
    {
       "directory" : "C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Debug",
       "command"   : "clang++ -D__MSPM0G3505__ -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang\" -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Driver\" -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Debug\" -I\"D:/APP/TI/mspm0_sdk_2_04_00_06/source/third_party/CMSIS/Core/Include\" -I\"D:/APP/TI/mspm0_sdk_2_04_00_06/source\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/c++/v1\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/lib/clang/18/include\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/c\" -xc",
       "file"      : "C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Driver/motor.c"
+   },
+   {
+      "directory" : "C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Debug",
+      "command"   : "clang++ -D__MSPM0G3505__ -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang\" -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Driver\" -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Debug\" -I\"D:/APP/TI/mspm0_sdk_2_04_00_06/source/third_party/CMSIS/Core/Include\" -I\"D:/APP/TI/mspm0_sdk_2_04_00_06/source\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/c++/v1\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/lib/clang/18/include\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/c\" -xc",
+      "file"      : "C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Driver/motor_QEI.c"
    },
    {
       "directory" : "C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Debug",
@@ -27,7 +27,32 @@
    {
       "directory" : "C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Debug",
       "command"   : "clang++ -D__MSPM0G3505__ -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang\" -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Driver\" -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Debug\" -I\"D:/APP/TI/mspm0_sdk_2_04_00_06/source/third_party/CMSIS/Core/Include\" -I\"D:/APP/TI/mspm0_sdk_2_04_00_06/source\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/c++/v1\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/lib/clang/18/include\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/c\" -xc",
-      "file"      : "C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Driver/UART.c"
+      "file"      : "C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/empty.c"
+   },
+   {
+      "directory" : "C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Debug",
+      "command"   : "clang++ -D__MSPM0G3505__ -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang\" -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Driver\" -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Debug\" -I\"D:/APP/TI/mspm0_sdk_2_04_00_06/source/third_party/CMSIS/Core/Include\" -I\"D:/APP/TI/mspm0_sdk_2_04_00_06/source\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/c++/v1\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/lib/clang/18/include\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/c\" -xc",
+      "file"      : "C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Driver/LED.c"
+   },
+   {
+      "directory" : "C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Debug",
+      "command"   : "clang++ -D__MSPM0G3505__ -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang\" -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Driver\" -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Debug\" -I\"D:/APP/TI/mspm0_sdk_2_04_00_06/source/third_party/CMSIS/Core/Include\" -I\"D:/APP/TI/mspm0_sdk_2_04_00_06/source\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/c++/v1\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/lib/clang/18/include\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/c\" -xc",
+      "file"      : "C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Driver/Beep.c"
+   },
+   {
+      "directory" : "C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Debug",
+      "command"   : "clang++ -D__MSPM0G3505__ -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang\" -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Driver\" -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Debug\" -I\"D:/APP/TI/mspm0_sdk_2_04_00_06/source/third_party/CMSIS/Core/Include\" -I\"D:/APP/TI/mspm0_sdk_2_04_00_06/source\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/c++/v1\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/lib/clang/18/include\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/c\" -xc",
+      "file"      : "C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Driver/Timer.c"
+   },
+   {
+      "directory" : "C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Debug",
+      "command"   : "clang++ -D__MSPM0G3505__ -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang\" -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Driver\" -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Debug\" -I\"D:/APP/TI/mspm0_sdk_2_04_00_06/source/third_party/CMSIS/Core/Include\" -I\"D:/APP/TI/mspm0_sdk_2_04_00_06/source\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/c++/v1\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/lib/clang/18/include\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/c\" -xc",
+      "file"      : "C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Driver/oled.c"
+   },
+   {
+      "directory" : "C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Debug",
+      "command"   : "clang++ -D__MSPM0G3505__ -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang\" -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Driver\" -I\"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Debug\" -I\"D:/APP/TI/mspm0_sdk_2_04_00_06/source/third_party/CMSIS/Core/Include\" -I\"D:/APP/TI/mspm0_sdk_2_04_00_06/source\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/c++/v1\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/lib/clang/18/include\" -isystem\"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/c\" -xc",
+      "file"      : "C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Driver/XunJi.c"
    },
    {
       "directory" : "C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Debug",

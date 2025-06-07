@@ -13,9 +13,14 @@ ORDERED_OBJS += \
 "./empty.o" \
 "./ti_msp_dl_config.o" \
 "./startup_mspm0g350x_ticlang.o" \
+"./Driver/Beep.o" \
+"./Driver/LED.o" \
+"./Driver/Timer.o" \
 "./Driver/UART.o" \
+"./Driver/XunJi.o" \
 "./Driver/motor.o" \
 "./Driver/motor_QEI.o" \
+"./Driver/oled.o" \
 "./Driver/pid.o" \
 "./Driver/task.o" \
 $(GEN_CMDS__FLAG) \
@@ -150,8 +155,8 @@ Car_LP_MSPM0G3507_nortos_ticlang.out: $(OBJS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(GEN_MISC_FILES__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "empty.o" "ti_msp_dl_config.o" "startup_mspm0g350x_ticlang.o" "Driver\UART.o" "Driver\motor.o" "Driver\motor_QEI.o" "Driver\pid.o" "Driver\task.o" 
-	-$(RM) "empty.d" "ti_msp_dl_config.d" "startup_mspm0g350x_ticlang.d" "Driver\UART.d" "Driver\motor.d" "Driver\motor_QEI.d" "Driver\pid.d" "Driver\task.d" 
+	-$(RM) "empty.o" "ti_msp_dl_config.o" "startup_mspm0g350x_ticlang.o" "Driver\Beep.o" "Driver\LED.o" "Driver\Timer.o" "Driver\UART.o" "Driver\XunJi.o" "Driver\motor.o" "Driver\motor_QEI.o" "Driver\oled.o" "Driver\pid.o" "Driver\task.o" 
+	-$(RM) "empty.d" "ti_msp_dl_config.d" "startup_mspm0g350x_ticlang.d" "Driver\Beep.d" "Driver\LED.d" "Driver\Timer.d" "Driver\UART.d" "Driver\XunJi.d" "Driver\motor.d" "Driver\motor_QEI.d" "Driver\oled.d" "Driver\pid.d" "Driver\task.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
