@@ -70,21 +70,21 @@ void TASK_INIT()
     PID_Init(&PID_BL,KP_BL,KI_BL,KD_BL);
     PID_Init(&PID_BR,KP_BR,KI_BR,KD_BR);
 
-    OLED_Init();
-
     Control_LED(disable_LED);
     Control_Beep(disable_Beep);
     Motor_On();
+    Go_stright(80);
 }
 
 void TASK_LOOP()
 {
-    if(Start_Count>0)
-    {
-        Task2();
-    }
-    printf("%f/n",PID_FL.out);
-    printf("%f/n",PID_FL.Target);
-    Motor_Ctrl();
+    // if(Start_Count>0)
+    // {
+    //     Task2();
+    // }
+    Control_Beep(enable_Beep);
+    // printf("%f/n",PID_FL.out);
+    // printf("%f/n",PID_FL.Target);
+    Go_stright(80);
 }
 

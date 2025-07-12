@@ -13,7 +13,6 @@ C_SRCS += \
 ../Driver/XunJi.c \
 ../Driver/motor.c \
 ../Driver/motor_QEI.c \
-../Driver/oled.c \
 ../Driver/pid.c \
 ../Driver/task.c 
 
@@ -25,7 +24,6 @@ C_DEPS += \
 ./Driver/XunJi.d \
 ./Driver/motor.d \
 ./Driver/motor_QEI.d \
-./Driver/oled.d \
 ./Driver/pid.d \
 ./Driver/task.d 
 
@@ -37,7 +35,6 @@ OBJS += \
 ./Driver/XunJi.o \
 ./Driver/motor.o \
 ./Driver/motor_QEI.o \
-./Driver/oled.o \
 ./Driver/pid.o \
 ./Driver/task.o 
 
@@ -49,7 +46,6 @@ OBJS__QUOTED += \
 "Driver\XunJi.o" \
 "Driver\motor.o" \
 "Driver\motor_QEI.o" \
-"Driver\oled.o" \
 "Driver\pid.o" \
 "Driver\task.o" 
 
@@ -61,7 +57,6 @@ C_DEPS__QUOTED += \
 "Driver\XunJi.d" \
 "Driver\motor.d" \
 "Driver\motor_QEI.d" \
-"Driver\oled.d" \
 "Driver\pid.d" \
 "Driver\task.d" 
 
@@ -73,7 +68,6 @@ C_SRCS__QUOTED += \
 "../Driver/XunJi.c" \
 "../Driver/motor.c" \
 "../Driver/motor_QEI.c" \
-"../Driver/oled.c" \
 "../Driver/pid.c" \
 "../Driver/task.c" 
 

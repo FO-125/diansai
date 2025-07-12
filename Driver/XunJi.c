@@ -169,7 +169,7 @@ void ControlSinAngleA_B(float targetAngle,uint16_t EncoderNumber)
     int StopFlag = 0;
     volatile int PWMoutLeft = 0,PWMoutRight = 0;
     volatile int PWMout = 0;
-    OLED_Clear();
+    // OLED_Clear();
     PID_Init(&PID_Yaw,SinJiaoKP,SinJiaoKI,SinJiaoKD);
     PID_SetTaget(&PID_Yaw, targetAngle);
     Average_count = 0;
@@ -231,7 +231,7 @@ void ControlSinAngleC_D(float targetAngle,uint16_t EncoderNumber)
     int StopFlag = 0;
     volatile int PWMoutLeft = 0,PWMoutRight = 0;
     volatile int PWMout = 0;
-    OLED_Clear();
+    // OLED_Clear();
     PID_Init(&PID_Yaw,SinJiaoKPC_D,SinJiaoKIC_D,SinJiaoKDC_D);
     PID_SetTaget(&PID_Yaw, targetAngle);
     Average_count = 0;
@@ -262,7 +262,7 @@ void ControlSinAngleC_D(float targetAngle,uint16_t EncoderNumber)
        Set_Speed(Wheel_BL, PWMoutLeft);
        Set_Speed(Wheel_FR, PWMoutRight);
        Set_Speed(Wheel_BR, PWMoutRight);
-       OLED_ShowNum(0,0,(int)QYaw,4,8);
+    //    OLED_ShowNum(0,0,(int)QYaw,4,8);
       Average_count = (Front_Left_Count+Front_Right_Count)/2;//等到一定距离后再进行寻迹是否到达的判定
     if(Average_count >= EncoderNumber)//寻迹路程判定退出pid寻迹//每个弧线的距离大约为1160个脉冲
      {

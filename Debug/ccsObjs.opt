@@ -8,7 +8,6 @@
 "./Driver/XunJi.o"
 "./Driver/motor.o"
 "./Driver/motor_QEI.o"
-"./Driver/oled.o"
 "./Driver/pid.o"
 "./Driver/task.o"
 -l"./device_linker.cmd"
