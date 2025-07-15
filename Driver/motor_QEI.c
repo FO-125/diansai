@@ -22,36 +22,36 @@ void GROUP1_IRQHandler(void)
     if (gpioB & GPIO_MOTOR_QEI_PIN_FL_A_PIN) 
     {
         if(DL_GPIO_readPins(GPIO_MOTOR_QEI_PIN_FL_B_PORT, GPIO_MOTOR_QEI_PIN_FL_B_PIN))
-            Front_Left_Count++;
-        else
             Front_Left_Count--;
+        else
+            Front_Left_Count++;
         DL_GPIO_clearInterruptStatus(GPIO_MOTOR_QEI_PIN_FL_A_PORT, GPIO_MOTOR_QEI_PIN_FL_A_PIN);
     }
 
     if (gpioA & GPIO_MOTOR_QEI_PIN_FR_A_PIN) 
     {
         if(DL_GPIO_readPins(GPIO_MOTOR_QEI_PIN_FR_B_PORT, GPIO_MOTOR_QEI_PIN_FR_B_PIN))
-            Front_Right_Count--;
-        else 
             Front_Right_Count++;
+        else 
+            Front_Right_Count--;
         DL_GPIO_clearInterruptStatus(GPIO_MOTOR_QEI_PIN_FR_A_PORT, GPIO_MOTOR_QEI_PIN_FR_A_PIN);
     }
     
     if (gpioB & GPIO_MOTOR_QEI_PIN_BL_A_PIN) 
     {
         if(DL_GPIO_readPins(GPIO_MOTOR_QEI_PIN_BL_B_PORT, GPIO_MOTOR_QEI_PIN_BL_B_PIN))
-            Back_Left_Count++;
-        else
             Back_Left_Count--;
+        else
+            Back_Left_Count++;
         DL_GPIO_clearInterruptStatus(GPIO_MOTOR_QEI_PIN_BL_A_PORT, GPIO_MOTOR_QEI_PIN_BL_A_PIN);
     }
 
     if (gpioA & GPIO_MOTOR_QEI_PIN_BR_A_PIN) 
     {
         if(DL_GPIO_readPins(GPIO_MOTOR_QEI_PIN_BR_B_PORT, GPIO_MOTOR_QEI_PIN_BR_B_PIN))
-            Back_Right_Count--;
-        else
             Back_Right_Count++;
+        else
+            Back_Right_Count--;
         DL_GPIO_clearInterruptStatus(GPIO_MOTOR_QEI_PIN_BR_A_PORT, GPIO_MOTOR_QEI_PIN_BR_A_PIN);
     }
     if (gpioB & GPIO_Button_PIN_0_PIN)

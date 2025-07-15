@@ -39,7 +39,7 @@ void Set_Speed(enum Wheel wheel, int8_t duty)
             DL_TimerA_setCaptureCompareValue(PWM_MOTOR_INST, compareValue, DL_TIMER_CC_0_INDEX);
             DL_GPIO_clearPins(GPIO_MOTOR_PIN_FL1_PORT, GPIO_MOTOR_PIN_FL1_PIN);
             DL_GPIO_setPins(GPIO_MOTOR_PIN_FL2_PORT, GPIO_MOTOR_PIN_FL2_PIN);
-            PID_FL.Target=duty;
+            // PID_FL.Target=duty;
         }
         else if(duty > 0)
         {
@@ -47,7 +47,7 @@ void Set_Speed(enum Wheel wheel, int8_t duty)
             DL_TimerA_setCaptureCompareValue(PWM_MOTOR_INST, compareValue, DL_TIMER_CC_0_INDEX);
             DL_GPIO_setPins(GPIO_MOTOR_PIN_FL1_PORT, GPIO_MOTOR_PIN_FL1_PIN);
             DL_GPIO_clearPins(GPIO_MOTOR_PIN_FL2_PORT, GPIO_MOTOR_PIN_FL2_PIN);
-            PID_FL.Target=duty;
+            // PID_FL.Target=duty;
         }
         else 
         {
@@ -61,19 +61,19 @@ void Set_Speed(enum Wheel wheel, int8_t duty)
     {
         if(duty < 0)
         {
-            compareValue = 3199 - 3199 * (duty/100.0);
-            DL_TimerA_setCaptureCompareValue(PWM_MOTOR_INST, compareValue, DL_TIMER_CC_1_INDEX);
-            DL_GPIO_setPins(GPIO_MOTOR_PIN_BL1_PORT, GPIO_MOTOR_PIN_BL1_PIN);
-            DL_GPIO_clearPins(GPIO_MOTOR_PIN_BL2_PORT, GPIO_MOTOR_PIN_BL2_PIN);
-            PID_FR.Target=duty;
-        }
-        else if(duty > 0)
-        {
             compareValue = 3199 - 3199 * (-duty/100.0);
             DL_TimerA_setCaptureCompareValue(PWM_MOTOR_INST, compareValue, DL_TIMER_CC_1_INDEX);
             DL_GPIO_clearPins(GPIO_MOTOR_PIN_BL1_PORT, GPIO_MOTOR_PIN_BL1_PIN);
             DL_GPIO_setPins(GPIO_MOTOR_PIN_BL2_PORT, GPIO_MOTOR_PIN_BL2_PIN);
-            PID_FR.Target=duty;
+            // PID_FR.Target=duty; 
+        }
+        else if(duty > 0)
+        {
+            compareValue = 3199 - 3199 * (duty/100.0);
+            DL_TimerA_setCaptureCompareValue(PWM_MOTOR_INST, compareValue, DL_TIMER_CC_1_INDEX);
+            DL_GPIO_setPins(GPIO_MOTOR_PIN_BL1_PORT, GPIO_MOTOR_PIN_BL1_PIN);
+            DL_GPIO_clearPins(GPIO_MOTOR_PIN_BL2_PORT, GPIO_MOTOR_PIN_BL2_PIN);
+            // PID_FR.Target=duty;
         }
         else 
         {
@@ -88,19 +88,20 @@ void Set_Speed(enum Wheel wheel, int8_t duty)
     {
         if(duty < 0)
         {
-             compareValue = 3199 - 3199 * (duty/100.0);
-            DL_TimerA_setCaptureCompareValue(PWM_MOTOR_INST, compareValue, DL_TIMER_CC_2_INDEX);
-            DL_GPIO_clearPins(GPIO_MOTOR_PIN_FR1_PORT, GPIO_MOTOR_PIN_FR1_PIN);
-            DL_GPIO_setPins(GPIO_MOTOR_PIN_FR2_PORT, GPIO_MOTOR_PIN_FR2_PIN);
-            PID_BL.Target=duty;
-        }
-        else if(duty > 0)
-        {
             compareValue = 3199 - 3199 * (-duty/100.0);
             DL_TimerA_setCaptureCompareValue(PWM_MOTOR_INST, compareValue, DL_TIMER_CC_2_INDEX);
             DL_GPIO_setPins(GPIO_MOTOR_PIN_FR1_PORT, GPIO_MOTOR_PIN_FR1_PIN);
             DL_GPIO_clearPins(GPIO_MOTOR_PIN_FR2_PORT, GPIO_MOTOR_PIN_FR2_PIN);
-            PID_BL.Target=duty;
+            // PID_BL.Target=duty;
+        }
+        else if(duty > 0)
+        {
+            compareValue = 3199 - 3199 * (duty/100.0);
+            DL_TimerA_setCaptureCompareValue(PWM_MOTOR_INST, compareValue, DL_TIMER_CC_2_INDEX);
+            DL_GPIO_clearPins(GPIO_MOTOR_PIN_FR1_PORT, GPIO_MOTOR_PIN_FR1_PIN);
+            DL_GPIO_setPins(GPIO_MOTOR_PIN_FR2_PORT, GPIO_MOTOR_PIN_FR2_PIN);
+            // PID_BL.Target=duty;
+            
            
         }
         else 
@@ -119,7 +120,7 @@ void Set_Speed(enum Wheel wheel, int8_t duty)
             DL_TimerA_setCaptureCompareValue(PWM_MOTOR_INST, compareValue, DL_TIMER_CC_3_INDEX);
             DL_GPIO_setPins(GPIO_MOTOR_PIN_BR1_PORT, GPIO_MOTOR_PIN_BR1_PIN);
             DL_GPIO_clearPins(GPIO_MOTOR_PIN_BR2_PORT, GPIO_MOTOR_PIN_BR2_PIN);
-            PID_BR.Target=duty;
+            // PID_BR.Target=duty;
         }
         else if(duty > 0)
         {
@@ -127,7 +128,7 @@ void Set_Speed(enum Wheel wheel, int8_t duty)
             DL_TimerA_setCaptureCompareValue(PWM_MOTOR_INST, compareValue, DL_TIMER_CC_3_INDEX);
             DL_GPIO_clearPins(GPIO_MOTOR_PIN_BR1_PORT, GPIO_MOTOR_PIN_BR1_PIN);
             DL_GPIO_setPins(GPIO_MOTOR_PIN_BR2_PORT, GPIO_MOTOR_PIN_BR2_PIN);
-            PID_BR.Target=duty;
+            // PID_BR.Target=duty;
         }
         else 
         {
@@ -141,9 +142,13 @@ void Set_Speed(enum Wheel wheel, int8_t duty)
 void Go_stright(int duty)
 {
     Set_Speed(Wheel_FL,duty);
+    PID_SetTaget(&PID_FL,duty);
     Set_Speed(Wheel_FR,duty);
+    PID_SetTaget(&PID_FR,duty);
     Set_Speed(Wheel_BL,duty);
+    PID_SetTaget(&PID_BL,duty);
     Set_Speed(Wheel_BR,duty);
+    PID_SetTaget(&PID_BR,duty);
 }
 
 void Go_turnLeft(int Centre_duty,int ChaZhi)
@@ -152,6 +157,10 @@ void Go_turnLeft(int Centre_duty,int ChaZhi)
     Set_Speed(Wheel_FR,Centre_duty+ChaZhi);
     Set_Speed(Wheel_BL,Centre_duty-ChaZhi);
     Set_Speed(Wheel_BR,Centre_duty+ChaZhi);
+    PID_SetTaget(&PID_FL,Centre_duty-ChaZhi);
+    PID_SetTaget(&PID_FR,Centre_duty+ChaZhi);
+    PID_SetTaget(&PID_BL,Centre_duty-ChaZhi);
+    PID_SetTaget(&PID_BR,Centre_duty+ChaZhi);
 }
 
 void Go_turnRight(int Centre_duty,int ChaZhi)
@@ -160,6 +169,10 @@ void Go_turnRight(int Centre_duty,int ChaZhi)
     Set_Speed(Wheel_FR,Centre_duty-ChaZhi);
     Set_Speed(Wheel_BL,Centre_duty+ChaZhi);
     Set_Speed(Wheel_BR,Centre_duty-ChaZhi);
+    PID_SetTaget(&PID_FL,Centre_duty+ChaZhi);
+    PID_SetTaget(&PID_FR,Centre_duty-ChaZhi);
+    PID_SetTaget(&PID_BL,Centre_duty+ChaZhi);
+    PID_SetTaget(&PID_BR,Centre_duty-ChaZhi);
 }
 
 // void Go_PIDYaw_turnRight(int duty)

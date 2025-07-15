@@ -4,7 +4,7 @@
 
 SHELL = cmd.exe
 
-CG_TOOL_ROOT := D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS
+CG_TOOL_ROOT := C:/ti/ccs2010/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS
 
 GEN_OPTS__FLAG := @"./device.opt" 
 GEN_CMDS__FLAG := -Wl,-l"./device_linker.cmd" 
@@ -147,7 +147,7 @@ all: $(OBJS) $(GEN_CMDS)
 Car_LP_MSPM0G3507_nortos_ticlang.out: $(OBJS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: Arm Linker'
-	"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/bin/tiarmclang.exe" @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O0 -gdwarf-3 -Wl,-m"Car_LP_MSPM0G3507_nortos_ticlang.map" -Wl,-i"D:/APP/TI/mspm0_sdk_2_04_00_06/source" -Wl,-i"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang" -Wl,-i"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Debug/syscfg" -Wl,-i"D:/APP/TI/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/lib" -Wl,--diag_wrap=off -Wl,--display_error_number -Wl,--warn_sections -Wl,--xml_link_info="Car_LP_MSPM0G3507_nortos_ticlang_linkInfo.xml" -Wl,--rom_model -o "Car_LP_MSPM0G3507_nortos_ticlang.out" $(ORDERED_OBJS)
+	"C:/ti/ccs2010/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/bin/tiarmclang.exe" @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O0 -gdwarf-3 -Wl,-m"Car_LP_MSPM0G3507_nortos_ticlang.map" -Wl,-i"C:/ti/mspm0_sdk_2_05_01_00/source" -Wl,-i"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang" -Wl,-i"C:/Users/28042/workspace_ccstheia/Car_LP_MSPM0G3507_nortos_ticlang/Debug/syscfg" -Wl,-i"C:/ti/ccs2010/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/lib" -Wl,--diag_wrap=off -Wl,--display_error_number -Wl,--warn_sections -Wl,--xml_link_info="Car_LP_MSPM0G3507_nortos_ticlang_linkInfo.xml" -Wl,--rom_model -o "Car_LP_MSPM0G3507_nortos_ticlang.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 

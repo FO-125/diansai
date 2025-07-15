@@ -1,4 +1,6 @@
 #include "lib.h"
+#include "motor.h"
+#include "pid.h"
 void Task2()
 {  
     My_Delay_MS(500);
@@ -64,27 +66,28 @@ void TASK_INIT()
     NVIC_INIT(GPIO_MOTOR_QEI_GPIOB_INT_IRQN);
     //Timer开启
     DL_Timer_startCounter(TIMER_MS_SYS_INST);
+    DL_Timer_startCounter(TIMER_MS_UART_INST);
     //底层PID初始化
     PID_Init(&PID_FL,KP_FL,KI_FL,KD_FL);
     PID_Init(&PID_FR,KP_FR,KI_FR,KD_FR);
     PID_Init(&PID_BL,KP_BL,KI_BL,KD_BL);
     PID_Init(&PID_BR,KP_BR,KI_BR,KD_BR);
-
-    Control_LED(disable_LED);
+    
+    Control_LED(enable_LED);
     Control_Beep(disable_Beep);
     Motor_On();
-    Go_stright(80);
+    Go_stright(50);
 }
 
 void TASK_LOOP()
 {
+    
     // if(Start_Count>0)
     // {
     //     Task2();
     // }
-    Control_Beep(enable_Beep);
-    // printf("%f/n",PID_FL.out);
-    // printf("%f/n",PID_FL.Target);
-    Go_stright(80);
+    
+    printf("%f,%f,%f,%f\n",PID_BR.Target,PID_BR.out,PID_BR.Actual,PID_BR.Error);
+ 
 }
 

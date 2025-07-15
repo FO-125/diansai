@@ -122,22 +122,6 @@ extern "C" {
 
 
 
-
-/* Defines for I2C_OLED */
-#define I2C_OLED_INST                                                       I2C0
-#define I2C_OLED_INST_IRQHandler                                 I2C0_IRQHandler
-#define I2C_OLED_INST_INT_IRQN                                     I2C0_INT_IRQn
-#define I2C_OLED_BUS_SPEED_HZ                                             400000
-#define GPIO_I2C_OLED_SDA_PORT                                             GPIOA
-#define GPIO_I2C_OLED_SDA_PIN                                     DL_GPIO_PIN_28
-#define GPIO_I2C_OLED_IOMUX_SDA                                   (IOMUX_PINCM3)
-#define GPIO_I2C_OLED_IOMUX_SDA_FUNC                    IOMUX_PINCM3_PF_I2C0_SDA
-#define GPIO_I2C_OLED_SCL_PORT                                             GPIOA
-#define GPIO_I2C_OLED_SCL_PIN                                     DL_GPIO_PIN_31
-#define GPIO_I2C_OLED_IOMUX_SCL                                   (IOMUX_PINCM6)
-#define GPIO_I2C_OLED_IOMUX_SCL_FUNC                    IOMUX_PINCM6_PF_I2C0_SCL
-
-
 /* Defines for UART_OPENMV */
 #define UART_OPENMV_INST                                                   UART1
 #define UART_OPENMV_INST_FREQUENCY                                      32000000
@@ -170,22 +154,6 @@ extern "C" {
 #define UART_TuoLuoYi_BAUD_RATE                                           (9600)
 #define UART_TuoLuoYi_IBRD_32_MHZ_9600_BAUD                                (208)
 #define UART_TuoLuoYi_FBRD_32_MHZ_9600_BAUD                                 (21)
-/* Defines for UART_0 */
-#define UART_0_INST                                                        UART2
-#define UART_0_INST_FREQUENCY                                           32000000
-#define UART_0_INST_IRQHandler                                  UART2_IRQHandler
-#define UART_0_INST_INT_IRQN                                      UART2_INT_IRQn
-#define GPIO_UART_0_RX_PORT                                                GPIOB
-#define GPIO_UART_0_TX_PORT                                                GPIOA
-#define GPIO_UART_0_RX_PIN                                        DL_GPIO_PIN_18
-#define GPIO_UART_0_TX_PIN                                        DL_GPIO_PIN_21
-#define GPIO_UART_0_IOMUX_RX                                     (IOMUX_PINCM44)
-#define GPIO_UART_0_IOMUX_TX                                     (IOMUX_PINCM46)
-#define GPIO_UART_0_IOMUX_RX_FUNC                      IOMUX_PINCM44_PF_UART2_RX
-#define GPIO_UART_0_IOMUX_TX_FUNC                      IOMUX_PINCM46_PF_UART2_TX
-#define UART_0_BAUD_RATE                                                  (9600)
-#define UART_0_IBRD_32_MHZ_9600_BAUD                                       (208)
-#define UART_0_FBRD_32_MHZ_9600_BAUD                                        (21)
 
 
 
@@ -301,10 +269,8 @@ void SYSCFG_DL_SYSCTL_init(void);
 void SYSCFG_DL_PWM_MOTOR_init(void);
 void SYSCFG_DL_TIMER_MS_UART_init(void);
 void SYSCFG_DL_TIMER_MS_SYS_init(void);
-void SYSCFG_DL_I2C_OLED_init(void);
 void SYSCFG_DL_UART_OPENMV_init(void);
 void SYSCFG_DL_UART_TuoLuoYi_init(void);
-void SYSCFG_DL_UART_0_init(void);
 
 
 bool SYSCFG_DL_saveConfiguration(void);

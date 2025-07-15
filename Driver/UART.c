@@ -6,6 +6,7 @@ float QYaw1Init;
 uint8_t USART_RXBUF_OPENMV[5];
 uint8_t USART_RXBUF_TuoLuoYi[20];
 char USART_RXBUF_XunJi[41];
+short Yawangle;
 struct OPENMV_Data Openmv=
 {
     .head1=0xA5,
@@ -22,7 +23,7 @@ struct XunJi_Data Xunji=
 //printf重定向
 int fputc(int c, FILE* stream)
 {
-	DL_UART_Main_transmitDataBlocking(UART_0_INST, c);
+	DL_UART_Main_transmitDataBlocking(UART_OPENMV_INST, c);
     return c;
 }
 
@@ -32,7 +33,7 @@ int fputs(const char* restrict s, FILE* restrict stream)
     len = strlen(s);
     for(i=0; i<len; i++)
     {
-        DL_UART_Main_transmitDataBlocking(UART_0_INST, s[i]);
+        DL_UART_Main_transmitDataBlocking(UART_OPENMV_INST, s[i]);
     }
     return len;
 }
@@ -93,7 +94,7 @@ void Uart_Run_TuoLuoYi()
     static uint8_t i = 0;
     uint8_t Res;
     float CarAngleYaw;
-    short Yawangle;
+    // short Yawangle;
     static uint8_t  flag =1;
     Res = DL_UART_Main_receiveData(UART_TuoLuoYi_INST);
     if(Res == 0x55&&flag == 1)
@@ -165,10 +166,10 @@ void Uart_Run_XunJi()
 
 void UART_OPENMV_INST_IRQHandler(void)
 {
-    DL_Timer_startCounter(TIMER_MS_UART_INST);
+    
 }
 
 void UART_TuoLuoYi_INST_IRQHandler()
 {
-    DL_Timer_startCounter(TIMER_MS_UART_INST);
+
 }

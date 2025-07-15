@@ -1,4 +1,5 @@
 #include "lib.h"
+#include "pid.h"
 // #define OPENMV
 #define Xunji
 #define TuoLuoYi 
@@ -27,13 +28,16 @@ void TIMER_MS_UART_INST_IRQHandler()
 
 void TIMER_MS_SYS_INST_IRQHandler()
 {
-    // static int Count;
-    // Count++;
-    // if(Count>=10)
-    // {
-    //     Count=0;
-
-    // }
+    static int Count;
+    Count++;
+    if(Count>=100)
+    {
+        Count=0;
+        PID_Update_FL(&PID_FL);
+        PID_Update_FR(&PID_FR);
+        PID_Update_BL(&PID_BL);
+        PID_Update_BR(&PID_BR);
+    }
 
     if(delay_count>0)
     {
