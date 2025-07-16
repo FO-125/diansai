@@ -20,9 +20,8 @@ void TIMER_MS_UART_INST_IRQHandler()
     Uart_Run_XunJi();
     #endif
 
-    #ifdef TuoLuoYi
-    Uart_Run_TuoLuoYi();
-    #endif
+    
+    Uart_Run_TuoLuoYi(JY61P_Data.RxData);
 }
 
 
