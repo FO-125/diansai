@@ -54,10 +54,11 @@ GPIO1.associatedPins[9].pin.$assign = "PB13";
 
 const Board = scripting.addModule("/ti/driverlib/Board", {}, false);
 
-GPIO2.$name                          = "GPIO_LED";
-GPIO2.associatedPins[0].$name        = "PIN_LED1";
-GPIO2.associatedPins[0].initialValue = "SET";
-GPIO2.associatedPins[0].pin.$assign  = "PA3";
+GPIO2.$name                              = "GPIO_LED";
+GPIO2.associatedPins[0].$name            = "PIN_LED1";
+GPIO2.associatedPins[0].initialValue     = "SET";
+GPIO2.associatedPins[0].internalResistor = "PULL_UP";
+GPIO2.associatedPins[0].pin.$assign      = "PB5";
 
 GPIO3.$name                               = "GPIO_MOTOR_QEI";
 GPIO3.associatedPins.create(8);
@@ -110,13 +111,13 @@ GPIO4.associatedPins[0].assignedPort     = "PORTB";
 GPIO4.associatedPins[0].assignedPin      = "8";
 GPIO4.associatedPins[0].internalResistor = "PULL_UP";
 
-GPIO5.$name                              = "GPIO_Button";
-GPIO5.associatedPins[0].$name            = "PIN_0";
-GPIO5.associatedPins[0].internalResistor = "PULL_UP";
-GPIO5.associatedPins[0].interruptEn      = true;
-GPIO5.associatedPins[0].polarity         = "FALL";
-GPIO5.associatedPins[0].assignedPort     = "PORTA";
-GPIO5.associatedPins[0].assignedPin      = "5";
+GPIO5.$name                               = "GPIO_Button";
+GPIO5.associatedPins[0].$name             = "PIN_0";
+GPIO5.associatedPins[0].interruptEn       = true;
+GPIO5.associatedPins[0].polarity          = "RISE";
+GPIO5.associatedPins[0].internalResistor  = "PULL_UP";
+GPIO5.associatedPins[0].launchPadShortcut = "Button3En";
+GPIO5.associatedPins[0].pin.$assign       = "PB21";
 
 PWM1.$name                              = "PWM_MOTOR";
 PWM1.timerCount                         = 3200;
@@ -210,6 +211,5 @@ GPIO3.associatedPins[4].pin.$suggestSolution = "PB1";
 GPIO3.associatedPins[6].pin.$suggestSolution = "PA25";
 GPIO3.associatedPins[7].pin.$suggestSolution = "PB17";
 GPIO4.associatedPins[0].pin.$suggestSolution = "PB8";
-GPIO5.associatedPins[0].pin.$suggestSolution = "PA5";
 SYSCTL.peripheral.$suggestSolution           = "SYSCTL";
 UART1.peripheral.$suggestSolution            = "UART1";

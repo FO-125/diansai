@@ -62,8 +62,8 @@ void TASK_INIT()
     NVIC_INIT(TIMER_MS_UART_INST_INT_IRQN);
     NVIC_INIT(TIMER_MS_SYS_INST_INT_IRQN);
     //GPIO NVIC配置
-    NVIC_INIT(GPIO_MOTOR_QEI_GPIOA_INT_IRQN);
-    NVIC_INIT(GPIO_MOTOR_QEI_GPIOB_INT_IRQN);
+    NVIC_INIT(GPIOA_INT_IRQn);
+    NVIC_INIT(GPIOB_INT_IRQn);
     //Timer开启
     DL_Timer_startCounter(TIMER_MS_SYS_INST);
     DL_Timer_startCounter(TIMER_MS_UART_INST);
@@ -76,7 +76,7 @@ void TASK_INIT()
     Control_LED(enable_LED);
     Control_Beep(disable_Beep);
     Motor_On();
-    Go_stright(50);
+    Set_Speed(Wheel_FL,20);
 }
 
 void TASK_LOOP()

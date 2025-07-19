@@ -14,11 +14,12 @@ int Start_Count=0;
 // NVIC_EnableIRQ(GPIO_MOTOR_QEI_GPIOA_INT_IRQN);
 // }
 
-
+int a=0;
 void GROUP1_IRQHandler(void)
 {
     uint32_t gpioA = DL_GPIO_getEnabledInterruptStatus(GPIOA, GPIO_MOTOR_QEI_PIN_FR_A_PIN | GPIO_MOTOR_QEI_PIN_BR_A_PIN);
     uint32_t gpioB = DL_GPIO_getEnabledInterruptStatus(GPIOB, GPIO_MOTOR_QEI_PIN_FL_A_PIN | GPIO_MOTOR_QEI_PIN_BL_A_PIN|GPIO_Button_PIN_0_PIN);
+    a=DL_GPIO_getEnabledInterruptStatus(GPIOB,GPIO_Button_PIN_0_PIN);
     if (gpioB & GPIO_MOTOR_QEI_PIN_FL_A_PIN) 
     {
         if(DL_GPIO_readPins(GPIO_MOTOR_QEI_PIN_FL_B_PORT, GPIO_MOTOR_QEI_PIN_FL_B_PIN))
@@ -57,6 +58,7 @@ void GROUP1_IRQHandler(void)
     if (gpioB & GPIO_Button_PIN_0_PIN)
     {
         Start_Count++;
+        DL_GPIO_clearInterruptStatus(GPIOB, GPIO_Button_PIN_0_PIN);
     }
 }
 

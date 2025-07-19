@@ -160,11 +160,11 @@ extern "C" {
 
 
 /* Port definition for Pin Group GPIO_LED */
-#define GPIO_LED_PORT                                                    (GPIOA)
+#define GPIO_LED_PORT                                                    (GPIOB)
 
-/* Defines for PIN_LED1: GPIOA.3 with pinCMx 8 on package pin 43 */
-#define GPIO_LED_PIN_LED1_PIN                                    (DL_GPIO_PIN_3)
-#define GPIO_LED_PIN_LED1_IOMUX                                   (IOMUX_PINCM8)
+/* Defines for PIN_LED1: GPIOB.5 with pinCMx 18 on package pin 53 */
+#define GPIO_LED_PIN_LED1_PIN                                    (DL_GPIO_PIN_5)
+#define GPIO_LED_PIN_LED1_IOMUX                                  (IOMUX_PINCM18)
 /* Port definition for Pin Group GPIO_BEEP */
 #define GPIO_BEEP_PORT                                                   (GPIOB)
 
@@ -172,11 +172,16 @@ extern "C" {
 #define GPIO_BEEP_beep1_PIN                                      (DL_GPIO_PIN_8)
 #define GPIO_BEEP_beep1_IOMUX                                    (IOMUX_PINCM25)
 /* Port definition for Pin Group GPIO_Button */
-#define GPIO_Button_PORT                                                 (GPIOA)
+#define GPIO_Button_PORT                                                 (GPIOB)
 
-/* Defines for PIN_0: GPIOA.5 with pinCMx 10 on package pin 45 */
-#define GPIO_Button_PIN_0_PIN                                    (DL_GPIO_PIN_5)
-#define GPIO_Button_PIN_0_IOMUX                                  (IOMUX_PINCM10)
+/* Defines for PIN_0: GPIOB.21 with pinCMx 49 on package pin 20 */
+// groups represented: ["GPIO_MOTOR_QEI","GPIO_Button"]
+// pins affected: ["PIN_FL_A","PIN_BL_A","PIN_0"]
+#define GPIO_MULTIPLE_GPIOB_INT_IRQN                            (GPIOB_INT_IRQn)
+#define GPIO_MULTIPLE_GPIOB_INT_IIDX            (DL_INTERRUPT_GROUP1_IIDX_GPIOB)
+#define GPIO_Button_PIN_0_IIDX                              (DL_GPIO_IIDX_DIO21)
+#define GPIO_Button_PIN_0_PIN                                   (DL_GPIO_PIN_21)
+#define GPIO_Button_PIN_0_IOMUX                                  (IOMUX_PINCM49)
 /* Defines for PIN_FL1: GPIOA.26 with pinCMx 59 on package pin 30 */
 #define GPIO_MOTOR_PIN_FL1_PORT                                          (GPIOA)
 #define GPIO_MOTOR_PIN_FL1_PIN                                  (DL_GPIO_PIN_26)
@@ -219,9 +224,6 @@ extern "C" {
 #define GPIO_MOTOR_PIN_BSTBY_IOMUX                               (IOMUX_PINCM30)
 /* Defines for PIN_FL_A: GPIOB.15 with pinCMx 32 on package pin 3 */
 #define GPIO_MOTOR_QEI_PIN_FL_A_PORT                                     (GPIOB)
-// pins affected by this interrupt request:["PIN_FL_A","PIN_BL_A"]
-#define GPIO_MOTOR_QEI_GPIOB_INT_IRQN                           (GPIOB_INT_IRQn)
-#define GPIO_MOTOR_QEI_GPIOB_INT_IIDX           (DL_INTERRUPT_GROUP1_IIDX_GPIOB)
 #define GPIO_MOTOR_QEI_PIN_FL_A_IIDX                        (DL_GPIO_IIDX_DIO15)
 #define GPIO_MOTOR_QEI_PIN_FL_A_PIN                             (DL_GPIO_PIN_15)
 #define GPIO_MOTOR_QEI_PIN_FL_A_IOMUX                            (IOMUX_PINCM32)
