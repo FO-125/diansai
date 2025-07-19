@@ -2,9 +2,13 @@
 
 startup_mspm0g350x_ticlang.o: \
  C:/ti/mspm0_sdk_2_05_01_00/source/ti/devices/msp/m0p/startup_system_files/ticlang/startup_mspm0g350x_ticlang.c \
+ C:/ti/ccs2010/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/c++/v1/stdint.h \
+ C:/ti/ccs2010/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/c++/v1/__config \
+ C:/ti/ccs2010/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/armv6m-ti-none-eabi/c++/v1/__config_site \
  C:/ti/mspm0_sdk_2_05_01_00/source/ti/devices/msp/msp.h \
  C:/ti/mspm0_sdk_2_05_01_00/source/ti/devices/DeviceFamily.h \
  C:/ti/mspm0_sdk_2_05_01_00/source/ti/devices/msp/m0p/mspm0g350x.h \
+ C:/ti/ccs2010/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/c++/v1/stdbool.h \
  C:/ti/mspm0_sdk_2_05_01_00/source/third_party/CMSIS/Core/Include/core_cm0plus.h \
  C:/ti/mspm0_sdk_2_05_01_00/source/ti/devices/msp/peripherals/hw_adc12.h \
  C:/ti/mspm0_sdk_2_05_01_00/source/ti/devices/msp/peripherals/hw_aes.h \
@@ -32,9 +36,13 @@ startup_mspm0g350x_ticlang.o: \
  C:/ti/mspm0_sdk_2_05_01_00/source/ti/devices/msp/peripherals/m0p/hw_debugss.h \
  C:/ti/mspm0_sdk_2_05_01_00/source/ti/devices/msp/peripherals/m0p/hw_sysctl.h \
  C:/ti/mspm0_sdk_2_05_01_00/source/ti/devices/msp/peripherals/m0p/sysctl/hw_sysctl_mspm0g1x0x_g3x0x.h
+C:/ti/ccs2010/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/c++/v1/stdint.h:
+C:/ti/ccs2010/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/c++/v1/__config:
+C:/ti/ccs2010/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/armv6m-ti-none-eabi/c++/v1/__config_site:
 C:/ti/mspm0_sdk_2_05_01_00/source/ti/devices/msp/msp.h:
 C:/ti/mspm0_sdk_2_05_01_00/source/ti/devices/DeviceFamily.h:
 C:/ti/mspm0_sdk_2_05_01_00/source/ti/devices/msp/m0p/mspm0g350x.h:
+C:/ti/ccs2010/ccs/tools/compiler/ti-cgt-armllvm_4.0.2.LTS/include/c++/v1/stdbool.h:
 C:/ti/mspm0_sdk_2_05_01_00/source/third_party/CMSIS/Core/Include/core_cm0plus.h:
 C:/ti/mspm0_sdk_2_05_01_00/source/ti/devices/msp/peripherals/hw_adc12.h:
 C:/ti/mspm0_sdk_2_05_01_00/source/ti/devices/msp/peripherals/hw_aes.h:

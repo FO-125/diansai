@@ -1,6 +1,64 @@
 #include "lib.h"
+
 int EncoderNumber=0;
 int CentrePWM=0;
+void getGpioValue()
+{
+    uint32_t GPIOA=DL_GPIO_readPins(GPIOA,GPIO_Xunji_PIN_6_PIN|GPIO_Xunji_PIN_7_PINGPIO_Xunji_PIN_8_PIN);
+    uint32_t GPIOB=DL_GPIO_readPins(GPIOB,GPIO_Xunji_PIN_1_PIN|GPIO_Xunji_PIN_2_PIN|GPIO_Xunji_PIN_3_PIN|GPIO_Xunji_PIN_4_PIN|GPIO_Xunji_PIN_5_PIN);
+    if ((GPIOB & GPIO_Xunji_PIN_1_PIN) != 0) // 高电平
+        Xunji.X1 =1;
+    else
+        Xunji.X1 =0;
+    if ((GPIOB & GPIO_Xunji_PIN_2_PIN) != 0) // 高电平
+        Xunji.X2 =1;
+    else
+        Xunji.X2 =0;
+    if ((GPIOB & GPIO_Xunji_PIN_3_PIN) != 0) // 高电平
+        Xunji.X3 =1;
+    else
+        Xunji.X3 =0;
+    if ((GPIOB & GPIO_Xunji_PIN_4_PIN) != 0) // 高电平
+        Xunji.X4 =1;
+    else
+        Xunji.X4 =0;
+    if ((GPIOB & GPIO_Xunji_PIN_5_PIN) != 0) // 高电平
+        Xunji.X5 =1;
+    else
+        Xunji.X5 =0;
+    if ((GPIOA & GPIO_Xunji_PIN_6_PIN) != 0) // 高电平
+        Xunji.X6 =1;
+    else
+        Xunji.X6 =0;
+    if ((GPIOA & GPIO_Xunji_PIN_7_PIN) != 0) // 高电平
+        Xunji.X7 =1;
+    else
+        Xunji.X7 =0;
+    if ((GPIOA & GPIO_Xunji_PIN_8_PIN) != 0) // 高电平
+        Xunji.X8 =1;
+    else
+        Xunji.X8 =0;
+}
+
+
+void ClearXunValue()
+{
+    Xunji.X1 = 0;
+    Xunji.X2 = 0;
+    Xunji.X3 = 0;
+    Xunji.X4 = 0;
+    Xunji.X5 = 0;
+    Xunji.X6 = 0;
+    Xunji.X7 = 0;
+    Xunji.X8 = 0;
+}
+
+void Xunji_Data_Run()
+{
+    ClearXunValue();
+    getGpioValue();
+}
+
 int GetXunJIErr(void)
 {
     static int lasterr = 0;

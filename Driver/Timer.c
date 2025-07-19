@@ -15,14 +15,8 @@ void TIMER_MS_UART_INST_IRQHandler()
     Translate_OPENMV();
     Go_OPENMV(&Openmv,30,3,2);
     #endif
-
-    #ifdef Xunji
-    Uart_Run_XunJi();
-    #endif
-
-    #ifdef TuoLuoYi
-    Uart_Run_TuoLuoYi();
-    #endif
+    Xunji_Data_Run();    
+    Uart_Run_TuoLuoYi(JY61P_Data.RxData);
 }
 
 

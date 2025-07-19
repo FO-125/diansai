@@ -80,7 +80,7 @@ void PID_Update_FL(S_PID* PID)
 {
     PID->Last_LastActual=PID->Last_Actual;
     PID->Last_Actual=PID->Actual;
-    (*PID).Actual=Get_QEI_FL();
+    (*PID).Actual=0.448*Get_QEI_FL()-1.56;
     PID->Last_LastError=PID->LastError;
     PID->LastError=PID->Error;
     PID->Error=PID->Target-PID->Actual;
@@ -104,7 +104,7 @@ void PID_Update_FL(S_PID* PID)
     {
         PID->out=-95;
     }
-    // Set_Speed(Wheel_FL,PID->out);
+    Set_Speed(Wheel_FL,PID->out);
 }
 
 void PID_Update_FR(S_PID* PID)
@@ -128,7 +128,7 @@ void PID_Update_FR(S_PID* PID)
     {
         PID->out=-95;
     }
-    // Set_Speed(Wheel_FR,PID->out);
+    Set_Speed(Wheel_FR,PID->out);
 }
 
 void PID_Update_BL(S_PID* PID)
@@ -151,7 +151,7 @@ void PID_Update_BL(S_PID* PID)
     {
         PID->out=-95;
     }
-    // Set_Speed(Wheel_BL,PID->out);
+    Set_Speed(Wheel_BL,PID->out);
 }
 
 void PID_Update_BR(S_PID* PID)
@@ -174,7 +174,7 @@ void PID_Update_BR(S_PID* PID)
     {
         PID->out=-95;
     }
-    // Set_Speed(Wheel_BR,PID->out);
+    Set_Speed(Wheel_BR,PID->out);
 }
 
 int PID_Update_Yaw(S_PID* PID)

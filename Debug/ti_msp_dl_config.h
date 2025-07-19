@@ -261,6 +261,38 @@ extern "C" {
 #define GPIO_MOTOR_QEI_PIN_BR_B_PORT                                     (GPIOB)
 #define GPIO_MOTOR_QEI_PIN_BR_B_PIN                             (DL_GPIO_PIN_17)
 #define GPIO_MOTOR_QEI_PIN_BR_B_IOMUX                            (IOMUX_PINCM43)
+/* Defines for PIN_1: GPIOB.27 with pinCMx 58 on package pin 29 */
+#define GPIO_Xunji_PIN_1_PORT                                            (GPIOB)
+#define GPIO_Xunji_PIN_1_PIN                                    (DL_GPIO_PIN_27)
+#define GPIO_Xunji_PIN_1_IOMUX                                   (IOMUX_PINCM58)
+/* Defines for PIN_2: GPIOB.26 with pinCMx 57 on package pin 28 */
+#define GPIO_Xunji_PIN_2_PORT                                            (GPIOB)
+#define GPIO_Xunji_PIN_2_PIN                                    (DL_GPIO_PIN_26)
+#define GPIO_Xunji_PIN_2_IOMUX                                   (IOMUX_PINCM57)
+/* Defines for PIN_3: GPIOB.23 with pinCMx 51 on package pin 22 */
+#define GPIO_Xunji_PIN_3_PORT                                            (GPIOB)
+#define GPIO_Xunji_PIN_3_PIN                                    (DL_GPIO_PIN_23)
+#define GPIO_Xunji_PIN_3_IOMUX                                   (IOMUX_PINCM51)
+/* Defines for PIN_4: GPIOB.22 with pinCMx 50 on package pin 21 */
+#define GPIO_Xunji_PIN_4_PORT                                            (GPIOB)
+#define GPIO_Xunji_PIN_4_PIN                                    (DL_GPIO_PIN_22)
+#define GPIO_Xunji_PIN_4_IOMUX                                   (IOMUX_PINCM50)
+/* Defines for PIN_5: GPIOB.10 with pinCMx 27 on package pin 62 */
+#define GPIO_Xunji_PIN_5_PORT                                            (GPIOB)
+#define GPIO_Xunji_PIN_5_PIN                                    (DL_GPIO_PIN_10)
+#define GPIO_Xunji_PIN_5_IOMUX                                   (IOMUX_PINCM27)
+/* Defines for PIN_6: GPIOA.23 with pinCMx 53 on package pin 24 */
+#define GPIO_Xunji_PIN_6_PORT                                            (GPIOA)
+#define GPIO_Xunji_PIN_6_PIN                                    (DL_GPIO_PIN_23)
+#define GPIO_Xunji_PIN_6_IOMUX                                   (IOMUX_PINCM53)
+/* Defines for PIN_7: GPIOA.21 with pinCMx 46 on package pin 17 */
+#define GPIO_Xunji_PIN_7_PORT                                            (GPIOA)
+#define GPIO_Xunji_PIN_7_PIN                                    (DL_GPIO_PIN_21)
+#define GPIO_Xunji_PIN_7_IOMUX                                   (IOMUX_PINCM46)
+/* Defines for PIN_8: GPIOA.7 with pinCMx 14 on package pin 49 */
+#define GPIO_Xunji_PIN_8_PORT                                            (GPIOA)
+#define GPIO_Xunji_PIN_8_PIN                                     (DL_GPIO_PIN_7)
+#define GPIO_Xunji_PIN_8_IOMUX                                   (IOMUX_PINCM14)
 
 /* clang-format on */
 

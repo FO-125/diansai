@@ -34,10 +34,10 @@ void PID_Update_BL(S_PID* PID);
 void PID_Update_BR(S_PID* PID);
 int PID_Update_Yaw(S_PID* PID);
 int PID_Update_Xunji(S_PID* PID);
-#define KP_FL 1
-#define KP_FR 1
-#define KP_BL 1
-#define KP_BR 1
+#define KP_FL 0.2
+#define KP_FR 0.2
+#define KP_BL 0.2
+#define KP_BR 0.2
 #define KI_FL 1
 #define KI_FR 1
 #define KI_BL 1

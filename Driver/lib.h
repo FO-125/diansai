@@ -9,4 +9,5 @@
 #include "LED.h"
 #include "Beep.h"
 #include "XunJi.h"
+#include "cstdint"
 #endif

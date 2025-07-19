@@ -53,11 +53,11 @@ void Task4()
 void TASK_INIT()
 {
     SYSCFG_DL_init();
-    NVIC_ClearPendingIRQ(UART_OPENMV_INST_INT_IRQN);
-    NVIC_ClearPendingIRQ(UART_TuoLuoYi_INST_INT_IRQN);
+    
     //UART NVIC配置
+    NVIC_ClearPendingIRQ(UART_OPENMV_INST_INT_IRQN);
     NVIC_INIT(UART_OPENMV_INST_INT_IRQN);
-    NVIC_INIT(UART_TuoLuoYi_INST_INT_IRQN);
+    jy61p_Init();
     //Timer NVIC配置
     NVIC_INIT(TIMER_MS_UART_INST_INT_IRQN);
     NVIC_INIT(TIMER_MS_SYS_INST_INT_IRQN);
@@ -75,8 +75,8 @@ void TASK_INIT()
     
     Control_LED(enable_LED);
     Control_Beep(disable_Beep);
-    Motor_On();
-    Set_Speed(Wheel_FL,20);
+    Motor_Off();
+    
 }
 
 void TASK_LOOP()
@@ -87,7 +87,7 @@ void TASK_LOOP()
     //     Task2();
     // }
     
-    printf("%f,%f,%f,%f\n",PID_BR.Target,PID_BR.out,PID_BR.Actual,PID_BR.Error);
+    printf("%f,%f,%f,%f\n",PID_BL.Target,PID_BL.out,PID_BL.Actual,PID_BL.Error);
  
 }
 
