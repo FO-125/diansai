@@ -1,55 +1,5 @@
 #include "lib.h"
 
-// float outer_pid_controller(float setpoint, float input, float kp, float ki, float kd, float dt) {
-//     static float integral = 0;
-//     static float prev_error = 0;
-//     float error = setpoint - input;
-
-//     // 计算积分项
-//     integral += error * dt;
-
-//     // 计算微分项
-//     float derivative = (error - prev_error) / dt;
-
-//     // 计算输出
-//     float output = kp * error + ki * integral + kd * derivative;
-
-//     // 更新上一个误差
-//     prev_error = error;
-
-//     return output;
-// }
-
-// float inner_pid_controller(float setpoint, float input, float kp, float ki, float kd, float dt) {
-//     static float integral = 0;
-//     static float prev_error = 0;
-//     float error = setpoint - input;
-
-//     // 计算积分项
-//     integral += error * dt;
-
-//     // 计算微分项
-//     float derivative = (error - prev_error) / dt;
-
-//     // 计算输出
-//     float output = kp * error + ki * integral + kd * derivative;
-
-//     // 更新上一个误差
-//     prev_error = error;
-
-//     return output;
-// }
-
-// float double_pid_controller(float setpoint, float input, float outer_kp, float outer_ki, float outer_kd, float inner_kp, float inner_ki, float inner_kd, float dt) {
-//     // 计算外环控制器输出
-//     float outer_output = outer_pid_controller(setpoint, input, outer_kp, outer_ki, outer_kd, dt);
-
-//     // 计算内环控制器输出
-//     float inner_output = inner_pid_controller(outer_output, input, inner_kp, inner_ki, inner_kd, dt);
-
-//     return inner_output;
-// }
-
 S_PID PID_FL;
 S_PID PID_FR;
 S_PID PID_BL;
@@ -104,7 +54,7 @@ void PID_Update_FL(S_PID* PID)
     {
         PID->out=-95;
     }
-    if(fabsf(PID->out-PID->Target)<2)
+    if(fabsf(PID->Actual-PID->Target)<2)
         PID->out=PID->Target;
     Set_Speed(Wheel_FL,PID->out);
 }
@@ -130,7 +80,7 @@ void PID_Update_FR(S_PID* PID)
     {
         PID->out=-95;
     }
-    if(fabsf(PID->out-PID->Target)<1)
+    if(fabsf(PID->Actual-PID->Target)<2)
         PID->out=PID->Target;
     Set_Speed(Wheel_FR,PID->out);
 }
@@ -155,7 +105,7 @@ void PID_Update_BL(S_PID* PID)
     {
         PID->out=-95;
     }
-    if(fabsf(PID->out-PID->Target)<1)
+    if(fabsf(PID->Actual-PID->Target)<2)
         PID->out=PID->Target;
     Set_Speed(Wheel_BL,PID->out);
 }
@@ -180,7 +130,7 @@ void PID_Update_BR(S_PID* PID)
     {
         PID->out=-95;
     }
-    if(fabsf(PID->out-PID->Target)<1)
+    if(fabsf(PID->Actual-PID->Target)<2)
         PID->out=PID->Target;
     Set_Speed(Wheel_BR,PID->out);
 }
@@ -189,7 +139,7 @@ int PID_Update_Yaw(S_PID* PID)
 {
     static float BianSu_C=0;
     PID->Last_Actual=PID->Actual;
-    PID->Actual=(wit_data.yaw - wit_data.yawInit/*直线的sin(Yaw)*/);
+    PID->Actual=(wit_data.yaw/*-6.7*/ - wit_data.yawInit/*-43.5*/);
     PID->Error=sin(PID->Target*3.1416/180)-sin(PID->Actual*3.1416/180);
     //变速积分
     BianSu_C=1/(8*fabs(PID->Error)+1);

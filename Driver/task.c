@@ -5,48 +5,48 @@
 void Task2()
 {  
     My_Delay_MS(1000);
-    ControlSinAngleA_B(0,1000);//小
-     XunJIPIDConcrolTurn(1200);//距离滤波
-     ControlSinAngleC_D (0,1000);
-     XunJIPIDConcrolTurn(1200);//距离滤波
+    ControlSinAngle(0,1000,AB);//小
+    XunJIPIDConcrolTurn(1200);//距离滤波
+    ControlSinAngle (0,1000,CD);
+    XunJIPIDConcrolTurn(1200);//距离滤波
 }
 
 void Task3()
 {
-    My_Delay_MS(1000);
-    ControlSinAngleA_B(0,1200);//小
-    XunJIPIDConcrolTurn(1300);//距离滤波
-     ControlSinAngleC_D(-103.8f,1400);
-    //  XunJIPIDConcrolTurn(1600);
+    My_Delay_MS(1200);
+    ControlSinAngle(44,570,AC);//小
+    // XunJIPIDConcrolTurn(750);//距离滤波
+    // ControlSinAngle(140,420,BD);
+    //  XunJIPIDConcrolTurn(700);
 }
 
 
-void Task4()
-{
-    My_Delay_MS(1000);
+// void Task4()
+// {
+//     My_Delay_MS(1000);
 
-    ControlSinAngleA_B(-56,1400);//小      -- 55
-    XunJIPIDConcrolTurn(1600);//距离滤波
-     ControlSinAngleC_D(-55.8f,1400);//-37.42     -- 55
-     XunJIPIDConcrolTurn(1600);
+//     ControlSinAngleA_B(-56,1400);//小      -- 55
+//     XunJIPIDConcrolTurn(1600);//距离滤波
+//      ControlSinAngleC_D(-55.8f,1400);//-37.42     -- 55
+//      XunJIPIDConcrolTurn(1600);
 
-     ControlSinAngleA_B(-49.5,1400);//小     -- 51
-     XunJIPIDConcrolTurn(1600);
-     ControlSinAngleC_D(-54.8,1400);//-37.42   -- 56
-     XunJIPIDConcrolTurn(1600);
+//      ControlSinAngleA_B(-49.5,1400);//小     -- 51
+//      XunJIPIDConcrolTurn(1600);
+//      ControlSinAngleC_D(-54.8,1400);//-37.42   -- 56
+//      XunJIPIDConcrolTurn(1600);
 
-    ControlSinAngleA_B(-48.9,1400);//小    -- 49.5
-    XunJIPIDConcrolTurn(1600);
-     ControlSinAngleC_D(-52.5,1400);//-53/52    -- 54.5
-     XunJIPIDConcrolTurn(1600);
+//     ControlSinAngleA_B(-48.9,1400);//小    -- 49.5
+//     XunJIPIDConcrolTurn(1600);
+//      ControlSinAngleC_D(-52.5,1400);//-53/52    -- 54.5
+//      XunJIPIDConcrolTurn(1600);
 
-         ControlSinAngleA_B(-54.5,1400);//小    -- 53
-    XunJIPIDConcrolTurn(1600);
-     ControlSinAngleC_D(-53.5,1400);//-37.42    -- 54
-     XunJIPIDConcrolTurn(1600);
+//          ControlSinAngleA_B(-54.5,1400);//小    -- 53
+//     XunJIPIDConcrolTurn(1600);
+//      ControlSinAngleC_D(-53.5,1400);//-37.42    -- 54
+//      XunJIPIDConcrolTurn(1600);
 
 
-}
+// }
 
 // ********************************************************************************************************************************************************************************************************************************************************************************************************************************
 void TASK_INIT()

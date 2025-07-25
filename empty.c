@@ -40,7 +40,7 @@ int main(void)
 
     while (1) 
     {
-        TASK_LOOP();
+        TASK_LOOP(); 
     }
     
 }

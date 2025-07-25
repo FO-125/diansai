@@ -207,7 +207,7 @@ void UART_WIT_INST_IRQHandler(void)
                 wit_data.pitch = (int16_t)((wit_dmaBuffer[packCnt*11+5]<<8)|wit_dmaBuffer[packCnt*11+4]) / 32768.0 * 180.0; //°
                 wit_data.yaw   = (int16_t)((wit_dmaBuffer[packCnt*11+7]<<8)|wit_dmaBuffer[packCnt*11+6]) / 32768.0 * 180.0; //°
                 wit_data.version = (int16_t)((wit_dmaBuffer[packCnt*11+9]<<8)|wit_dmaBuffer[packCnt*11+8]);
-                wit_data.QYaw1 = (sin(wit_data.yaw*3.1416/180))*100;
+                // wit_data.QYaw1 = (sin(wit_data.yaw*3.1416/180))*100;
             }
         }
 

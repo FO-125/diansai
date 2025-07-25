@@ -10,6 +10,8 @@ volatile int32_t Back_Right_Count = 0;
 
 volatile int32_t QFL = 0;
 volatile int32_t QFR = 0;
+volatile int32_t QBL = 0;
+volatile int32_t QBR = 0;
 volatile int32_t Average_count=0;
 int Start_Count=0;
 
@@ -57,18 +59,30 @@ void GROUP1_IRQHandler(void)
     if (gpioB & GPIO_MOTOR_QEI_PIN_BL_A_PIN) 
     {
         if(DL_GPIO_readPins(GPIO_MOTOR_QEI_PIN_BL_B_PORT, GPIO_MOTOR_QEI_PIN_BL_B_PIN))
+        {   
             Back_Left_Count--;
+            QBL--;
+        }
         else
+        {    
             Back_Left_Count++;
+            QBL++;
+        }
         DL_GPIO_clearInterruptStatus(GPIO_MOTOR_QEI_PIN_BL_A_PORT, GPIO_MOTOR_QEI_PIN_BL_A_PIN);
     }
 
     if (gpioA & GPIO_MOTOR_QEI_PIN_BR_A_PIN) 
     {
         if(DL_GPIO_readPins(GPIO_MOTOR_QEI_PIN_BR_B_PORT, GPIO_MOTOR_QEI_PIN_BR_B_PIN))
+        {    
             Back_Right_Count++;
+            QBR++;
+        }
         else
+        {    
             Back_Right_Count--;
+            QBR--;
+        }
         DL_GPIO_clearInterruptStatus(GPIO_MOTOR_QEI_PIN_BR_A_PORT, GPIO_MOTOR_QEI_PIN_BR_A_PIN);
     }
     if (gpioB & GPIO_Button_PIN_0_PIN)

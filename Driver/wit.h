@@ -33,8 +33,6 @@ typedef struct {
     int16_t gz;
     int16_t version;
     float yawInit;
-    float QYaw1;
-    float QYaw1Init;
 } WIT_Data_t;
 
 extern WIT_Data_t wit_data;

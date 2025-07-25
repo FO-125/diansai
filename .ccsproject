@@ -12,6 +12,6 @@
 	<activeTargetConfiguration value="targetConfigs/MSPM0G3507.ccxml"/>
 	<isTargetConfigurationManual value="false"/>
 	<sourceLookupPath value="${COM_TI_MSPM0_SDK_INSTALL_DIR}/source/ti/driverlib"/>
-	<origin value="C:/Users/28042/Desktop/CCSproject/Encoder_LP_MSPM0G3507_nortos_ticlang/Encoder_LP_MSPM0G3507_nortos_ticlang"/>
+	<origin value="C:/Users/28042/Desktop/dansaichongshengban"/>
 	<filesToOpen value="empty.syscfg,README.md"/>
 </projectOptions>
