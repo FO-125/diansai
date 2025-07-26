@@ -38,5 +38,5 @@ typedef struct {
 extern WIT_Data_t wit_data;
 
 void WIT_Init(void);
-
+void YawInit(float YawInit);
 #endif /* #ifndef __WIT_H */

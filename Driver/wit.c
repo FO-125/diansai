@@ -7,6 +7,11 @@ WIT_Data_t wit_data=
     
 };
 
+void YawInit(float YawInit)
+{
+    wit_data.yawInit=YawInit;
+}
+
 void WIT_Init(void)
 {
     DL_DMA_setSrcAddr(DMA, DMA_WIT_CHAN_ID, (uint32_t)(&UART_WIT_INST->RXDATA));

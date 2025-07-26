@@ -56,7 +56,7 @@ extern struct XunJi_Data Xunji;
 // void jy61p_Init(void);
 void Uart_Run_OPENMV();
 // void Uart_Run_TuoLuoYi();
-void YawInit(float YawInit);
+
 int fputc(int c, FILE* stream);
 int fputs(const char* restrict s, FILE* restrict stream);
 int puts(const char *_ptr);

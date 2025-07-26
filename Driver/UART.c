@@ -16,11 +16,6 @@ struct XunJi_Data Xunji=
 {
 
 };
-// struct JY61P_Data JY61P_Data=
-// {
-//     .RxIndex=0,
-//     .RxState=0,
-// };
 
 
 //printf重定向
@@ -48,119 +43,48 @@ count += fputs("\n", stdout);
 return count;
 }
 
-// void jy61p_Init(void)
-
-// {
-
-//     NVIC_ClearPendingIRQ(UART_TuoLuoYi_INST_INT_IRQN);
-
-//     NVIC_EnableIRQ(UART_TuoLuoYi_INST_INT_IRQN);
-
-//     DL_UART_clearInterruptStatus(UART_TuoLuoYi_INST,GPIO_UART_TuoLuoYi_IOMUX_RX_FUNC);//清除中断标志位
-    
-// }
-
-
 void NVIC_INIT(IRQn_Type UART0_INT_IRQn)
 {
     // NVIC_ClearPendingIRQ(UART0_INT_IRQn);
     NVIC_EnableIRQ(UART0_INT_IRQn);
 }
 
-void Uart_Run_OPENMV(void)
-{
-    static uint8_t i = 0;
-    uint8_t Res;
-    static uint8_t  flag =1;
-    Res = DL_UART_Main_receiveData(UART_OPENMV_INST);
-    if(Res == 0xA5&&flag == 1)
-        flag = 2;
-    else if(Res == 0xA6 && flag == 2)
-        flag =3;
-    else if (flag ==3)
-    {
-        if(Res != 0x5A)
-        {
-            USART_RXBUF_OPENMV[i++] = Res;
-        }
-        else if(Res == 0xA5)
-        {
-            Openmv.data1=USART_RXBUF_OPENMV[0];
-            Openmv.data2=USART_RXBUF_OPENMV[1];
-            Openmv.data3=USART_RXBUF_OPENMV[2];
-            Openmv.data4=USART_RXBUF_OPENMV[3];
-            Openmv.data5=USART_RXBUF_OPENMV[4];
-            i = 0;
-            flag=1;
-        }
-    }
-    
-    else
-    {
-        i = 0;
-        flag=1;
-    }
-}
-
-
-// //获取角度
-// void Uart_Run_TuoLuoYi()
+// void Uart_Run_OPENMV(void)
 // {
-//     JY61P_Data.Roll_last=JY61P_Data.Roll;
-//     JY61P_Data.Pitch_last=JY61P_Data.Pitch;
-//     JY61P_Data.RxData = DL_UART_receiveData(UART_TuoLuoYi_INST);
-//     uint8_t i,sum=0;
-//     if (JY61P_Data.RxState == 0)   //等待包头
+//     static uint8_t i = 0;
+//     uint8_t Res;
+//     static uint8_t  flag =1;
+//     Res = DL_UART_Main_receiveData(UART_OPENMV_INST);
+//     if(Res == 0xA5&&flag == 1)
+//         flag = 2;
+//     else if(Res == 0xA6 && flag == 2)
+//         flag =3;
+//     else if (flag ==3)
 //     {
-//         if (JY61P_Data.RxData == 0x55) //收到包头
+//         if(Res != 0x5A)
 //         {
-//             JY61P_Data.RxBuffer[JY61P_Data.RxIndex] = JY61P_Data.RxData;
-//             JY61P_Data.RxState = 1;
-//             JY61P_Data.RxIndex = 1; //进入下一状态
+//             USART_RXBUF_OPENMV[i++] = Res;
+//         }
+//         else if(Res == 0xA5)
+//         {
+//             Openmv.data1=USART_RXBUF_OPENMV[0];
+//             Openmv.data2=USART_RXBUF_OPENMV[1];
+//             Openmv.data3=USART_RXBUF_OPENMV[2];
+//             Openmv.data4=USART_RXBUF_OPENMV[3];
+//             Openmv.data5=USART_RXBUF_OPENMV[4];
+//             i = 0;
+//             flag=1;
 //         }
 //     }
     
-//     else if (JY61P_Data.RxState == 1)
+//     else
 //     {
-//         if (JY61P_Data.RxData == 0x53) /*判断数据内容，0x53为角度输出*/
-//         {
-//             JY61P_Data.RxBuffer[JY61P_Data.RxIndex] = JY61P_Data.RxData;
-//             JY61P_Data.RxState = 2;
-//             JY61P_Data.RxIndex = 2; //进入下一状态
-//         }
+//         i = 0;
+//         flag=1;
 //     }
-//     else if (JY61P_Data.RxState == 2)  //接收数据
-//     {
-//         JY61P_Data.RxBuffer[JY61P_Data.RxIndex++] = JY61P_Data.RxData;
-//         if(JY61P_Data.RxIndex == 11)   //接收完成
-//         {
-//             // for(i=0;i<10;i++)
-//             // {
-//             //     sum = sum + JY61P_Data.RxBuffer[i]; //计算校验和
-//             // }
-//             // if(sum ==JY61P_Data.RxBuffer[10])     //校验成功
-//             // {
-//             JY61P_Data.Roll = ((int16_t) ((int16_t) JY61P_Data.RxBuffer[3] << 8 | (int16_t) JY61P_Data.RxBuffer[2])) / 32768.0f * 180.0f;
-//             JY61P_Data.Pitch = ((int16_t) ((int16_t) JY61P_Data.RxBuffer[5] << 8 | (int16_t) JY61P_Data.RxBuffer[4])) / 32768.0f * 180.0f;
-//             JY61P_Data.Yaw = ((int16_t) ((int16_t) JY61P_Data.RxBuffer[7] << 8 | (int16_t) JY61P_Data.RxBuffer[6])) / 32768.0f * 180.0f;
-                
-//             // }
-//             JY61P_Data.RxState = 0;
-
-//             JY61P_Data.RxIndex = 0; //读取完成，回到最初状态，等待包头
-//             if(abs(JY61P_Data.Yaw-JY61P_Data.Pitch_last)>2&&abs(JY61P_Data.Yaw-JY61P_Data.Roll_last)>2)
-//                 JY61P_Data.Yaw_true=JY61P_Data.Yaw;
-//             JY61P_Data.QYaw1 = (sin(JY61P_Data.Yaw_true*3.1416/180))*100;      
-//         }
-
-//     }
-
 // }
 
-void YawInit(float YawInit)
-{
-    wit_data.yawInit=YawInit;
-}
+
 
 
 void UART_OPENMV_INST_IRQHandler(void)

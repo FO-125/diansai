@@ -25,7 +25,6 @@ void GROUP1_IRQHandler(void)
 {
     uint32_t gpioA = DL_GPIO_getEnabledInterruptStatus(GPIOA, GPIO_MOTOR_QEI_PIN_FR_A_PIN | GPIO_MOTOR_QEI_PIN_BR_A_PIN);
     uint32_t gpioB = DL_GPIO_getEnabledInterruptStatus(GPIOB, GPIO_MOTOR_QEI_PIN_FL_A_PIN | GPIO_MOTOR_QEI_PIN_BL_A_PIN|GPIO_Button_PIN_0_PIN);
-    a=DL_GPIO_getEnabledInterruptStatus(GPIOB,GPIO_Button_PIN_0_PIN);
     if (gpioB & GPIO_MOTOR_QEI_PIN_FL_A_PIN) 
     {
         if(DL_GPIO_readPins(GPIO_MOTOR_QEI_PIN_FL_B_PORT, GPIO_MOTOR_QEI_PIN_FL_B_PIN))
@@ -60,13 +59,13 @@ void GROUP1_IRQHandler(void)
     {
         if(DL_GPIO_readPins(GPIO_MOTOR_QEI_PIN_BL_B_PORT, GPIO_MOTOR_QEI_PIN_BL_B_PIN))
         {   
-            Back_Left_Count--;
-            QBL--;
-        }
-        else
-        {    
             Back_Left_Count++;
             QBL++;
+        }
+        else if(DL_GPIO_readPins(GPIO_MOTOR_QEI_PIN_BL_B_PORT, GPIO_MOTOR_QEI_PIN_BL_B_PIN)==0)
+        {    
+            Back_Left_Count--;
+            QBL--;
         }
         DL_GPIO_clearInterruptStatus(GPIO_MOTOR_QEI_PIN_BL_A_PORT, GPIO_MOTOR_QEI_PIN_BL_A_PIN);
     }
