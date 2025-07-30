@@ -8,11 +8,6 @@
 // #define DL_TIMER_CC_3_INDEX PWM_BR
 void Motor_On(void);
 void Motor_Off(void);
-void Set_Speed(uint8_t side, int8_t duty);
-extern int16_t rxbuf , cx ;
-extern int16_t baseSpeed ;
-extern int16_t SpeedL , SpeedR ;
-extern float Kp ;
 enum Wheel 
 {
     Wheel_FL=0,
@@ -20,6 +15,12 @@ enum Wheel
     Wheel_BL,
     Wheel_BR,
 };
+void Set_Speed(enum Wheel wheel, int8_t duty);
+extern int16_t rxbuf , cx ;
+extern int16_t baseSpeed ;
+extern int16_t SpeedL , SpeedR ;
+extern float Kp ;
+
 void Go_stright(int duty);
 void Go_turnLeft(int Centre_duty,int ChaZhi);
 void Go_turnRight(int Centre_duty,int ChaZhi);

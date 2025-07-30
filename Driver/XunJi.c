@@ -1,3 +1,4 @@
+
 #include "UART.h"
 #include "lib.h"
 
@@ -64,13 +65,13 @@ void Xunji_Data_Run()
 
 int GetXunJIErr(void)
 {
-    int data=3*Xunji.X1+2*Xunji.X2+1.5*Xunji.X3+Xunji.X4-Xunji.X5-1.5*Xunji.X6-2*Xunji.X7-3*Xunji.X8;
+    int data=3*Xunji.X1+2.5*Xunji.X2+1.5*Xunji.X3+Xunji.X4-Xunji.X5-1.5*Xunji.X6-2.5*Xunji.X7-3*Xunji.X8;
     return data;
 }
 
-void XunJIPIDConcrolTurn(uint16_t EncoderNumber)
+
+void XunJIPIDConcrol(uint16_t EncoderNumber)
 {
-    int StopFlag = 0;
     volatile int PWMoutLeft = 0,PWMoutRight = 0;
     volatile int PWMout = 0;
     PID_Init(&PID_Turn,XunJi_KP,XunJi_KI,XunJi_KD);
@@ -107,12 +108,11 @@ void XunJIPIDConcrolTurn(uint16_t EncoderNumber)
         PID_SetTaget(&PID_FR,PWMoutRight);
         PID_SetTaget(&PID_BR,PWMoutRight);
       Average_count = (QFL+QFR)/2;//等到一定距离后再进行寻迹是否到达的判定
-    if(Average_count >= EncoderNumber)//寻迹路程判定退出pid寻迹//每个弧线的距离大约为1160个脉冲
-     {
-        StopFlag = Xunji.X1+Xunji.X2+Xunji.X3+Xunji.X4+Xunji.X5+Xunji.X6+Xunji.X7+Xunji.X8;
-        // if( StopFlag == 0)
-        // {
-            // Control_Beep(enable_Beep);
+    // if(Average_count >= EncoderNumber)//寻迹路程判定退出pid寻迹
+    //  {
+        if(Xunji.X7==1&&Xunji.X8==1)
+        {
+            Control_Beep(enable_Beep);
             Average_count = 0;
             QFL = 0;
             QFR = 0;
@@ -126,19 +126,18 @@ void XunJIPIDConcrolTurn(uint16_t EncoderNumber)
             PID_SetTaget(&PID_BR,0);
             //声光提醒  
             My_Delay_MS(3000);
-            // Control_Beep(disable_Beep);
+            Control_Beep(disable_Beep);
             return ;
         }
 
-    //  }
-    }
+     }
+    // }
 }
     int PWMoutLeft = 0,PWMoutRight = 0;
 void ControlSinAngle(float targetAngle,uint16_t EncoderNumber,enum Path path)
 {
 
-    int StopFlag = 0;
-   // OLED_Clear();
+    // int StopFlag = 0;
     PID_Init(&PID_Yaw,SinJiaoKP,SinJiaoKI,SinJiaoKD);
     PID_SetTaget(&PID_Yaw, targetAngle);
 
@@ -147,12 +146,12 @@ void ControlSinAngle(float targetAngle,uint16_t EncoderNumber,enum Path path)
     QFR = 0;
     while(1)
     {
-       if(path==AB||path==AC) 
+       if(path==anticlockwise) 
        {
         PWMoutRight = CentrePWM + YawPWMout;
         PWMoutLeft = CentrePWM - YawPWMout;
        }
-       else if(path==CD||path==BD)
+       else if(path==clockwise)
        {
         PWMoutRight = CentrePWM - YawPWMout;
         PWMoutLeft = CentrePWM + YawPWMout;
@@ -195,7 +194,7 @@ void ControlSinAngle(float targetAngle,uint16_t EncoderNumber,enum Path path)
             PID_SetTaget(&PID_FR,0);
             PID_SetTaget(&PID_BR,0);
             //声光提醒  
-            My_Delay_MS(30000);
+            My_Delay_MS(3000);
             // Control_Beep(disable_Beep);
             return ;
         }
@@ -204,66 +203,3 @@ void ControlSinAngle(float targetAngle,uint16_t EncoderNumber,enum Path path)
     }
 }
 
-//     int PWMoutLeft = 0,PWMoutRight = 0;  
-// void ControlSinAngleC_D(float targetAngle,uint16_t EncoderNumber)
-// {
-//     int StopFlag = 0;
-  
-//     volatile int PWMout = 0;
-//     // OLED_Clear();
-//     PID_Init(&PID_Yaw,SinJiaoKPC_D,SinJiaoKIC_D,SinJiaoKDC_D);
-//     PID_SetTaget(&PID_Yaw, targetAngle);
-//     Average_count = 0;
-//     QFL = 0;
-//     QFR = 0;
-//     while(1)
-//     {
-//         PWMoutRight = CentrePWM - YawPWMout;
-//         PWMoutLeft = CentrePWM + YawPWMout;
-
-//     if(PWMoutRight>=95)
-//         PWMoutRight=95;
-//     else if(PWMoutRight<=-95)
-//         PWMoutRight=-95;
-//      if(PWMoutLeft>=95)
-//         PWMoutLeft=95;
-//     else if(PWMoutLeft<=-95)
-//         PWMoutLeft=-95;
-
-//        //除了输出pwm还要根据pwm控制转向
-//        Set_Speed(Wheel_FL, PWMoutLeft);
-//        Set_Speed(Wheel_BL, PWMoutLeft);
-//        Set_Speed(Wheel_FR, PWMoutRight);
-//        Set_Speed(Wheel_BR, PWMoutRight);
-//        PID_SetTaget(&PID_FL,PWMoutLeft);
-//        PID_SetTaget(&PID_BL,PWMoutLeft);
-//        PID_SetTaget(&PID_FR,PWMoutRight);
-//        PID_SetTaget(&PID_BR,PWMoutRight);
-//     //    OLED_ShowNum(0,0,(int)QYaw,4,8);
-//       Average_count = (QFL+QFR)/2;//等到一定距离后再进行寻迹是否到达的判定
-//     if(Average_count >= EncoderNumber)//寻迹路程判定退出pid寻迹//每个弧线的距离大约为1160个脉冲
-//      {
-//         // StopFlag = Xunji.X1+Xunji.X2+Xunji.X3+Xunji.X4+Xunji.X5+Xunji.X6+Xunji.X7+Xunji.X8;
-//         // if( StopFlag == 0)
-//         // {
-//             // Control_Beep(enable_Beep);
-//             Average_count = 0;
-//             Front_Left_Count = 0;
-//             Front_Right_Count = 0;
-//             Set_Speed(Wheel_FL, 0);
-//             Set_Speed(Wheel_BL, 0);
-//             Set_Speed(Wheel_FR, 0);
-//             Set_Speed(Wheel_BR, 0);
-//             PID_SetTaget(&PID_FL,0);
-//             PID_SetTaget(&PID_BL,0);
-//             PID_SetTaget(&PID_FR,0);
-//             PID_SetTaget(&PID_BR,0);
-//             //声光提醒  
-//             My_Delay_MS(100);
-//             // Control_Beep(disable_Beep);
-//             return ;
-//         // }
-
-//      }
-//     }
-// }

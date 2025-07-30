@@ -1,6 +1,6 @@
 # FIXED
 
-Driver/UART.o: ../Driver/UART.c ../Driver/UART.h \
+Peripheral/.o: ../Peripheral/UART.c ../Peripheral/UART.h \
  ti_msp_dl_config.h \
  C:/ti/mspm0_sdk_2_05_01_00/source/ti/devices/msp/msp.h \
  C:/ti/mspm0_sdk_2_05_01_00/source/ti/devices/DeviceFamily.h \
@@ -75,10 +75,28 @@ Driver/UART.o: ../Driver/UART.c ../Driver/UART.h \
  C:/ti/mspm0_sdk_2_05_01_00/source/ti/driverlib/dl_wwdt.h \
  C:/ti/mspm0_sdk_2_05_01_00/source/ti/driverlib/m0p/dl_interrupt.h \
  C:/ti/mspm0_sdk_2_05_01_00/source/ti/driverlib/m0p/dl_systick.h \
- ../Driver/lib.h ../Driver/pid.h ../Driver/motor.h \
- ../Driver/motor_QEI.h ../Driver/LED.h ../Driver/Beep.h \
- ../Driver/XunJi.h ../Driver/wit.h
-../Driver/UART.h:
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Driver/lib.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Driver/pid.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Driver/motor.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/UART.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Driver/motor_QEI.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Driver/LED.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Driver/Beep.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/wit.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/K230.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Driver/Timer.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Driver/XunJi.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/OLED_Hardware_I2C/oled_hardware_i2c.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/imu660rb.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/Fusion.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionAhrs.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionConvention.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionMath.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionAxes.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionCalibration.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionCompass.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionOffset.h
+../Peripheral/UART.h:
 ti_msp_dl_config.h:
 C:/ti/mspm0_sdk_2_05_01_00/source/ti/devices/msp/msp.h:
 C:/ti/mspm0_sdk_2_05_01_00/source/ti/devices/DeviceFamily.h:
@@ -153,11 +171,24 @@ C:/ti/mspm0_sdk_2_05_01_00/source/ti/driverlib/dl_vref.h:
 C:/ti/mspm0_sdk_2_05_01_00/source/ti/driverlib/dl_wwdt.h:
 C:/ti/mspm0_sdk_2_05_01_00/source/ti/driverlib/m0p/dl_interrupt.h:
 C:/ti/mspm0_sdk_2_05_01_00/source/ti/driverlib/m0p/dl_systick.h:
-../Driver/lib.h:
-../Driver/pid.h:
-../Driver/motor.h:
-../Driver/motor_QEI.h:
-../Driver/LED.h:
-../Driver/Beep.h:
-../Driver/XunJi.h:
-../Driver/wit.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Driver/lib.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Driver/pid.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Driver/motor.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/UART.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Driver/motor_QEI.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Driver/LED.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Driver/Beep.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/wit.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/K230.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Driver/Timer.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Driver/XunJi.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/OLED_Hardware_I2C/oled_hardware_i2c.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/imu660rb.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/Fusion.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionAhrs.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionConvention.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionMath.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionAxes.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionCalibration.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionCompass.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionOffset.h:

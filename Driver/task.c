@@ -1,58 +1,34 @@
 #include "UART.h"
+#include "XunJi.h"
 #include "lib.h"
 #include "motor.h"
+#include "pid.h"
 
-void Task2()
-{  
-    My_Delay_MS(1000);
-    ControlSinAngle(0,1000,AB);//小
-    XunJIPIDConcrolTurn(1200);//距离滤波
-    ControlSinAngle (0,1000,CD);
-    XunJIPIDConcrolTurn(1200);//距离滤波
-}
-
-void Task3()
+void Task1()
 {
-    My_Delay_MS(1200);
-    ControlSinAngle(44,570,AC);//小
-    // XunJIPIDConcrolTurn(750);//距离滤波
-    // ControlSinAngle(140,420,BD);
-    //  XunJIPIDConcrolTurn(700);
+    for(int j=0;j<5;j++)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            // 1. 沿直线行驶（使用八路灰度传感器PID控制）
+            XunJIPIDConcrol(1000);
+            
+            // 2. 转弯90度（使用Yaw角PID控制）
+            ControlSinAngle(90, 150, anticlockwise);
+        }
+    }
+   
 }
 
 
-// void Task4()
-// {
-//     My_Delay_MS(1000);
-
-//     ControlSinAngleA_B(-56,1400);//小      -- 55
-//     XunJIPIDConcrolTurn(1600);//距离滤波
-//      ControlSinAngleC_D(-55.8f,1400);//-37.42     -- 55
-//      XunJIPIDConcrolTurn(1600);
-
-//      ControlSinAngleA_B(-49.5,1400);//小     -- 51
-//      XunJIPIDConcrolTurn(1600);
-//      ControlSinAngleC_D(-54.8,1400);//-37.42   -- 56
-//      XunJIPIDConcrolTurn(1600);
-
-//     ControlSinAngleA_B(-48.9,1400);//小    -- 49.5
-//     XunJIPIDConcrolTurn(1600);
-//      ControlSinAngleC_D(-52.5,1400);//-53/52    -- 54.5
-//      XunJIPIDConcrolTurn(1600);
-
-//          ControlSinAngleA_B(-54.5,1400);//小    -- 53
-//     XunJIPIDConcrolTurn(1600);
-//      ControlSinAngleC_D(-53.5,1400);//-37.42    -- 54
-//      XunJIPIDConcrolTurn(1600);
 
 
-// }
+
 
 // ********************************************************************************************************************************************************************************************************************************************************************************************************************************
 void TASK_INIT()
 {
     SYSCFG_DL_init();
-    
     //UART NVIC配置
     NVIC_ClearPendingIRQ(UART_OPENMV_INST_INT_IRQN);
     NVIC_INIT(UART_OPENMV_INST_INT_IRQN);
@@ -61,18 +37,14 @@ void TASK_INIT()
     //Timer NVIC配置
     NVIC_INIT(TIMER_MS_SYS_INST_INT_IRQN);
     //GPIO NVIC配置
-    NVIC_INIT(GPIOA_INT_IRQn);
-    NVIC_INIT(GPIOB_INT_IRQn);
+    NVIC_EnableIRQ(1);
     //Timer开启
     DL_Timer_startCounter(TIMER_MS_SYS_INST);
     //底层PID初始化
-    PID_Init(&PID_FL,KP_FL,KI_FL,KD_FL);
-    PID_Init(&PID_FR,KP_FR,KI_FR,KD_FR);
-    PID_Init(&PID_BL,KP_BL,KI_BL,KD_BL);
-    PID_Init(&PID_BR,KP_BR,KI_BR,KD_BR);
+    PID_Init_Wheel();
     
     Control_LED(disable_LED);
-    // Control_Beep(disable_Beep);
+    Control_Beep(disable_Beep);
     Motor_On();
     Go_stright(0);
 
@@ -87,34 +59,11 @@ void TASK_LOOP()
     
     if(Start_Count>0)
     {
-        Task3();
+        // XunJIPIDConcrol(1000);
+        Set_Speed(Wheel_FR, 20);
+        PID_SetTaget(&PID_FR,20);
     }
-    // PWMout = PID_Update_Yaw(&PID_Yaw);//范围为20左右
-    //                 //根据输出的PWM极性来判断需要左偏还是右偏
-    //                 //偏右为+
-    //                 //偏左为-
-        
-    //   PWMoutRight = CentrePWM + PWMout;
-    //   PWMoutLeft = CentrePWM - PWMout;
-
-    // if(PWMoutRight>=95)
-    //     PWMoutRight=95;
-    // else if(PWMoutRight<=-95)
-    //     PWMoutRight=-95;
-    //  if(PWMoutLeft>=95)
-    //     PWMoutLeft=95;
-    // else if(PWMoutLeft<=-95)
-    //     PWMoutLeft=-95;
-
-    //    //除了输出pwm还要根据pwm控制转向
-    //    Set_Speed(Wheel_FL, PWMoutLeft);
-    //    Set_Speed(Wheel_BL, PWMoutLeft);
-    //    Set_Speed(Wheel_FR, PWMoutRight);
-    //    Set_Speed(Wheel_BR, PWMoutRight);
-    //    PID_SetTaget(&PID_FL,PWMoutLeft);
-    //    PID_SetTaget(&PID_BL,PWMoutLeft);
-    //    PID_SetTaget(&PID_FR,PWMoutRight);
-    //    PID_SetTaget(&PID_BR,PWMoutRight);
+    
     // printf("%f,%f,%f\n", wit_data.pitch, wit_data.roll, wit_data.yaw);
  
 }

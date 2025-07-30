@@ -31,9 +31,9 @@ void Motor_Off(void)
 void Set_Speed(enum Wheel wheel, int8_t duty)
 {
     
-    if(wheel == Wheel_FL)
+    if(wheel == Wheel_FR)
     {
-        if(duty < 0)
+        if(duty > 0)
         {
             compareValue = 3199 - 3199 * (-duty/100.0);
             DL_TimerA_setCaptureCompareValue(PWM_MOTOR_INST, compareValue, DL_TIMER_CC_0_INDEX);
@@ -41,7 +41,7 @@ void Set_Speed(enum Wheel wheel, int8_t duty)
             DL_GPIO_setPins(GPIO_MOTOR_PIN_FL2_PORT, GPIO_MOTOR_PIN_FL2_PIN);
             // PID_FL.Target=duty;
         }
-        else if(duty > 0)
+        else if(duty < 0)
         {
             compareValue = 3199 - 3199 * (duty/100.0);
             DL_TimerA_setCaptureCompareValue(PWM_MOTOR_INST, compareValue, DL_TIMER_CC_0_INDEX);
@@ -57,9 +57,9 @@ void Set_Speed(enum Wheel wheel, int8_t duty)
         // PID_Update_FL(&PID_FL);
     }
 
-    if(wheel == Wheel_BL)
+    if(wheel == Wheel_BR)
     {
-        if(duty < 0)
+        if(duty > 0)
         {
             compareValue = 3199 - 3199 * (-duty/100.0);
             DL_TimerA_setCaptureCompareValue(PWM_MOTOR_INST, compareValue, DL_TIMER_CC_1_INDEX);
@@ -67,7 +67,7 @@ void Set_Speed(enum Wheel wheel, int8_t duty)
             DL_GPIO_setPins(GPIO_MOTOR_PIN_BL2_PORT, GPIO_MOTOR_PIN_BL2_PIN);
             // PID_FR.Target=duty; 
         }
-        else if(duty > 0)
+        else if(duty < 0)
         {
             compareValue = 3199 - 3199 * (duty/100.0);
             DL_TimerA_setCaptureCompareValue(PWM_MOTOR_INST, compareValue, DL_TIMER_CC_1_INDEX);
@@ -84,9 +84,9 @@ void Set_Speed(enum Wheel wheel, int8_t duty)
 
     }
     
-    if(wheel==Wheel_FR)
+    if(wheel==Wheel_FL)
     {
-        if(duty < 0)
+        if(duty > 0)
         {
             compareValue = 3199 - 3199 * (-duty/100.0);
             DL_TimerA_setCaptureCompareValue(PWM_MOTOR_INST, compareValue, DL_TIMER_CC_2_INDEX);
@@ -94,7 +94,7 @@ void Set_Speed(enum Wheel wheel, int8_t duty)
             DL_GPIO_clearPins(GPIO_MOTOR_PIN_FR2_PORT, GPIO_MOTOR_PIN_FR2_PIN);
             // PID_BL.Target=duty;
         }
-        else if(duty > 0)
+        else if(duty < 0)
         {
             compareValue = 3199 - 3199 * (duty/100.0);
             DL_TimerA_setCaptureCompareValue(PWM_MOTOR_INST, compareValue, DL_TIMER_CC_2_INDEX);
@@ -112,9 +112,9 @@ void Set_Speed(enum Wheel wheel, int8_t duty)
         // PID_Update_FR(&PID_FR);
     }
 
-    if(wheel==Wheel_BR)
+    if(wheel==Wheel_BL)
     {
-        if(duty < 0)
+        if(duty > 0)
         {
             compareValue = 3199 - 3199 * (-duty/100.0);
             DL_TimerA_setCaptureCompareValue(PWM_MOTOR_INST, compareValue, DL_TIMER_CC_3_INDEX);
@@ -122,7 +122,7 @@ void Set_Speed(enum Wheel wheel, int8_t duty)
             DL_GPIO_clearPins(GPIO_MOTOR_PIN_BR2_PORT, GPIO_MOTOR_PIN_BR2_PIN);
             // PID_BR.Target=duty;
         }
-        else if(duty > 0)
+        else if(duty < 0)
         {
             compareValue = 3199 - 3199 * (duty/100.0);
             DL_TimerA_setCaptureCompareValue(PWM_MOTOR_INST, compareValue, DL_TIMER_CC_3_INDEX);

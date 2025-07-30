@@ -41,6 +41,7 @@
 #include "ti_msp_dl_config.h"
 
 DL_TimerA_backupConfig gPWM_MOTORBackup;
+DL_SPI_backupConfig gSPI_IMU660RBBackup;
 
 /*
  *  ======== SYSCFG_DL_init ========
@@ -54,14 +55,16 @@ SYSCONFIG_WEAK void SYSCFG_DL_init(void)
     SYSCFG_DL_SYSCTL_init();
     SYSCFG_DL_PWM_MOTOR_init();
     SYSCFG_DL_TIMER_MS_SYS_init();
-    SYSCFG_DL_I2C_0_init();
+    SYSCFG_DL_I2C_OLED_init();
     SYSCFG_DL_UART_OPENMV_init();
     SYSCFG_DL_UART_WIT_init();
+    SYSCFG_DL_SPI_IMU660RB_init();
     SYSCFG_DL_DMA_init();
     /* Ensure backup structures have no valid state */
 	gPWM_MOTORBackup.backupRdy 	= false;
 
 
+	gSPI_IMU660RBBackup.backupRdy 	= false;
 
 }
 /*
@@ -73,6 +76,7 @@ SYSCONFIG_WEAK bool SYSCFG_DL_saveConfiguration(void)
     bool retStatus = true;
 
 	retStatus &= DL_TimerA_saveConfiguration(PWM_MOTOR_INST, &gPWM_MOTORBackup);
+	retStatus &= DL_SPI_saveConfiguration(SPI_IMU660RB_INST, &gSPI_IMU660RBBackup);
 
     return retStatus;
 }
@@ -83,6 +87,7 @@ SYSCONFIG_WEAK bool SYSCFG_DL_restoreConfiguration(void)
     bool retStatus = true;
 
 	retStatus &= DL_TimerA_restoreConfiguration(PWM_MOTOR_INST, &gPWM_MOTORBackup, false);
+	retStatus &= DL_SPI_restoreConfiguration(SPI_IMU660RB_INST, &gSPI_IMU660RBBackup);
 
     return retStatus;
 }
@@ -93,18 +98,20 @@ SYSCONFIG_WEAK void SYSCFG_DL_initPower(void)
     DL_GPIO_reset(GPIOB);
     DL_TimerA_reset(PWM_MOTOR_INST);
     DL_TimerG_reset(TIMER_MS_SYS_INST);
-    DL_I2C_reset(I2C_0_INST);
+    DL_I2C_reset(I2C_OLED_INST);
     DL_UART_Main_reset(UART_OPENMV_INST);
     DL_UART_Main_reset(UART_WIT_INST);
+    DL_SPI_reset(SPI_IMU660RB_INST);
 
 
     DL_GPIO_enablePower(GPIOA);
     DL_GPIO_enablePower(GPIOB);
     DL_TimerA_enablePower(PWM_MOTOR_INST);
     DL_TimerG_enablePower(TIMER_MS_SYS_INST);
-    DL_I2C_enablePower(I2C_0_INST);
+    DL_I2C_enablePower(I2C_OLED_INST);
     DL_UART_Main_enablePower(UART_OPENMV_INST);
     DL_UART_Main_enablePower(UART_WIT_INST);
+    DL_SPI_enablePower(SPI_IMU660RB_INST);
 
     delay_cycles(POWER_STARTUP_DELAY);
 }
@@ -121,16 +128,16 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
     DL_GPIO_initPeripheralOutputFunction(GPIO_PWM_MOTOR_C3_IOMUX,GPIO_PWM_MOTOR_C3_IOMUX_FUNC);
     DL_GPIO_enableOutput(GPIO_PWM_MOTOR_C3_PORT, GPIO_PWM_MOTOR_C3_PIN);
 
-    DL_GPIO_initPeripheralInputFunctionFeatures(GPIO_I2C_0_IOMUX_SDA,
-        GPIO_I2C_0_IOMUX_SDA_FUNC, DL_GPIO_INVERSION_DISABLE,
+    DL_GPIO_initPeripheralInputFunctionFeatures(GPIO_I2C_OLED_IOMUX_SDA,
+        GPIO_I2C_OLED_IOMUX_SDA_FUNC, DL_GPIO_INVERSION_DISABLE,
         DL_GPIO_RESISTOR_NONE, DL_GPIO_HYSTERESIS_DISABLE,
         DL_GPIO_WAKEUP_DISABLE);
-    DL_GPIO_initPeripheralInputFunctionFeatures(GPIO_I2C_0_IOMUX_SCL,
-        GPIO_I2C_0_IOMUX_SCL_FUNC, DL_GPIO_INVERSION_DISABLE,
+    DL_GPIO_initPeripheralInputFunctionFeatures(GPIO_I2C_OLED_IOMUX_SCL,
+        GPIO_I2C_OLED_IOMUX_SCL_FUNC, DL_GPIO_INVERSION_DISABLE,
         DL_GPIO_RESISTOR_NONE, DL_GPIO_HYSTERESIS_DISABLE,
         DL_GPIO_WAKEUP_DISABLE);
-    DL_GPIO_enableHiZ(GPIO_I2C_0_IOMUX_SDA);
-    DL_GPIO_enableHiZ(GPIO_I2C_0_IOMUX_SCL);
+    DL_GPIO_enableHiZ(GPIO_I2C_OLED_IOMUX_SDA);
+    DL_GPIO_enableHiZ(GPIO_I2C_OLED_IOMUX_SCL);
 
     DL_GPIO_initPeripheralOutputFunction(
         GPIO_UART_OPENMV_IOMUX_TX, GPIO_UART_OPENMV_IOMUX_TX_FUNC);
@@ -139,6 +146,13 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
     DL_GPIO_initPeripheralInputFunction(
         GPIO_UART_WIT_IOMUX_RX, GPIO_UART_WIT_IOMUX_RX_FUNC);
 
+    DL_GPIO_initPeripheralOutputFunction(
+        GPIO_SPI_IMU660RB_IOMUX_SCLK, GPIO_SPI_IMU660RB_IOMUX_SCLK_FUNC);
+    DL_GPIO_initPeripheralOutputFunction(
+        GPIO_SPI_IMU660RB_IOMUX_PICO, GPIO_SPI_IMU660RB_IOMUX_PICO_FUNC);
+    DL_GPIO_initPeripheralInputFunction(
+        GPIO_SPI_IMU660RB_IOMUX_POCI, GPIO_SPI_IMU660RB_IOMUX_POCI_FUNC);
+
     DL_GPIO_initDigitalOutputFeatures(GPIO_LED_PIN_LED1_IOMUX,
 		 DL_GPIO_INVERSION_DISABLE, DL_GPIO_RESISTOR_PULL_UP,
 		 DL_GPIO_DRIVE_STRENGTH_LOW, DL_GPIO_HIZ_DISABLE);
@@ -146,6 +160,8 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
     DL_GPIO_initDigitalInputFeatures(GPIO_Button_PIN_0_IOMUX,
 		 DL_GPIO_INVERSION_DISABLE, DL_GPIO_RESISTOR_PULL_UP,
 		 DL_GPIO_HYSTERESIS_DISABLE, DL_GPIO_WAKEUP_DISABLE);
+
+    DL_GPIO_initDigitalOutput(GPIO_BEEP_beep_IOMUX);
 
     DL_GPIO_initDigitalOutput(GPIO_MOTOR_PIN_FL1_IOMUX);
 
@@ -167,14 +183,6 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
 
     DL_GPIO_initDigitalOutput(GPIO_MOTOR_PIN_BSTBY_IOMUX);
 
-    DL_GPIO_initDigitalInputFeatures(GPIO_MOTOR_QEI_PIN_FL_A_IOMUX,
-		 DL_GPIO_INVERSION_DISABLE, DL_GPIO_RESISTOR_NONE,
-		 DL_GPIO_HYSTERESIS_DISABLE, DL_GPIO_WAKEUP_DISABLE);
-
-    DL_GPIO_initDigitalInputFeatures(GPIO_MOTOR_QEI_PIN_FL_B_IOMUX,
-		 DL_GPIO_INVERSION_DISABLE, DL_GPIO_RESISTOR_NONE,
-		 DL_GPIO_HYSTERESIS_DISABLE, DL_GPIO_WAKEUP_DISABLE);
-
     DL_GPIO_initDigitalInputFeatures(GPIO_MOTOR_QEI_PIN_FR_A_IOMUX,
 		 DL_GPIO_INVERSION_DISABLE, DL_GPIO_RESISTOR_NONE,
 		 DL_GPIO_HYSTERESIS_DISABLE, DL_GPIO_WAKEUP_DISABLE);
@@ -183,11 +191,11 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
 		 DL_GPIO_INVERSION_DISABLE, DL_GPIO_RESISTOR_NONE,
 		 DL_GPIO_HYSTERESIS_DISABLE, DL_GPIO_WAKEUP_DISABLE);
 
-    DL_GPIO_initDigitalInputFeatures(GPIO_MOTOR_QEI_PIN_BL_A_IOMUX,
+    DL_GPIO_initDigitalInputFeatures(GPIO_MOTOR_QEI_PIN_FL_A_IOMUX,
 		 DL_GPIO_INVERSION_DISABLE, DL_GPIO_RESISTOR_NONE,
 		 DL_GPIO_HYSTERESIS_DISABLE, DL_GPIO_WAKEUP_DISABLE);
 
-    DL_GPIO_initDigitalInputFeatures(GPIO_MOTOR_QEI_PIN_BL_B_IOMUX,
+    DL_GPIO_initDigitalInputFeatures(GPIO_MOTOR_QEI_PIN_FL_B_IOMUX,
 		 DL_GPIO_INVERSION_DISABLE, DL_GPIO_RESISTOR_NONE,
 		 DL_GPIO_HYSTERESIS_DISABLE, DL_GPIO_WAKEUP_DISABLE);
 
@@ -196,6 +204,14 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
 		 DL_GPIO_HYSTERESIS_DISABLE, DL_GPIO_WAKEUP_DISABLE);
 
     DL_GPIO_initDigitalInputFeatures(GPIO_MOTOR_QEI_PIN_BR_B_IOMUX,
+		 DL_GPIO_INVERSION_DISABLE, DL_GPIO_RESISTOR_NONE,
+		 DL_GPIO_HYSTERESIS_DISABLE, DL_GPIO_WAKEUP_DISABLE);
+
+    DL_GPIO_initDigitalInputFeatures(GPIO_MOTOR_QEI_PIN_BL_A_IOMUX,
+		 DL_GPIO_INVERSION_DISABLE, DL_GPIO_RESISTOR_NONE,
+		 DL_GPIO_HYSTERESIS_DISABLE, DL_GPIO_WAKEUP_DISABLE);
+
+    DL_GPIO_initDigitalInputFeatures(GPIO_MOTOR_QEI_PIN_BL_B_IOMUX,
 		 DL_GPIO_INVERSION_DISABLE, DL_GPIO_RESISTOR_NONE,
 		 DL_GPIO_HYSTERESIS_DISABLE, DL_GPIO_WAKEUP_DISABLE);
 
@@ -231,43 +247,56 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
 		 DL_GPIO_INVERSION_DISABLE, DL_GPIO_RESISTOR_NONE,
 		 DL_GPIO_HYSTERESIS_DISABLE, DL_GPIO_WAKEUP_DISABLE);
 
+    DL_GPIO_initDigitalOutput(GPIO_IMU660RB_PIN_IMU660RB_CS_IOMUX);
+
+    DL_GPIO_initDigitalInputFeatures(GPIO_IMU660RB_PIN_IMU660RB_INT1_IOMUX,
+		 DL_GPIO_INVERSION_DISABLE, DL_GPIO_RESISTOR_NONE,
+		 DL_GPIO_HYSTERESIS_DISABLE, DL_GPIO_WAKEUP_DISABLE);
+
     DL_GPIO_clearPins(GPIOA, GPIO_MOTOR_PIN_FL1_PIN |
 		GPIO_MOTOR_PIN_FR2_PIN |
 		GPIO_MOTOR_PIN_BL2_PIN |
 		GPIO_MOTOR_PIN_BR1_PIN |
-		GPIO_MOTOR_PIN_BR2_PIN);
+		GPIO_MOTOR_PIN_BR2_PIN |
+		GPIO_IMU660RB_PIN_IMU660RB_CS_PIN);
     DL_GPIO_enableOutput(GPIOA, GPIO_MOTOR_PIN_FL1_PIN |
 		GPIO_MOTOR_PIN_FR2_PIN |
 		GPIO_MOTOR_PIN_BL2_PIN |
 		GPIO_MOTOR_PIN_BR1_PIN |
-		GPIO_MOTOR_PIN_BR2_PIN);
+		GPIO_MOTOR_PIN_BR2_PIN |
+		GPIO_IMU660RB_PIN_IMU660RB_CS_PIN);
     DL_GPIO_setLowerPinsPolarity(GPIOA, DL_GPIO_PIN_12_EDGE_RISE);
     DL_GPIO_setUpperPinsPolarity(GPIOA, DL_GPIO_PIN_25_EDGE_RISE);
-    DL_GPIO_clearInterruptStatus(GPIOA, GPIO_MOTOR_QEI_PIN_FR_A_PIN |
-		GPIO_MOTOR_QEI_PIN_BR_A_PIN);
-    DL_GPIO_enableInterrupt(GPIOA, GPIO_MOTOR_QEI_PIN_FR_A_PIN |
-		GPIO_MOTOR_QEI_PIN_BR_A_PIN);
-    DL_GPIO_clearPins(GPIOB, GPIO_MOTOR_PIN_FL2_PIN |
+    DL_GPIO_clearInterruptStatus(GPIOA, GPIO_MOTOR_QEI_PIN_FL_A_PIN |
+		GPIO_MOTOR_QEI_PIN_BL_A_PIN);
+    DL_GPIO_enableInterrupt(GPIOA, GPIO_MOTOR_QEI_PIN_FL_A_PIN |
+		GPIO_MOTOR_QEI_PIN_BL_A_PIN);
+    DL_GPIO_clearPins(GPIOB, GPIO_BEEP_beep_PIN |
+		GPIO_MOTOR_PIN_FL2_PIN |
 		GPIO_MOTOR_PIN_FR1_PIN |
 		GPIO_MOTOR_PIN_BL1_PIN |
 		GPIO_MOTOR_PIN_FSTBY_PIN |
 		GPIO_MOTOR_PIN_BSTBY_PIN);
     DL_GPIO_setPins(GPIOB, GPIO_LED_PIN_LED1_PIN);
     DL_GPIO_enableOutput(GPIOB, GPIO_LED_PIN_LED1_PIN |
+		GPIO_BEEP_beep_PIN |
 		GPIO_MOTOR_PIN_FL2_PIN |
 		GPIO_MOTOR_PIN_FR1_PIN |
 		GPIO_MOTOR_PIN_BL1_PIN |
 		GPIO_MOTOR_PIN_FSTBY_PIN |
 		GPIO_MOTOR_PIN_BSTBY_PIN);
-    DL_GPIO_setLowerPinsPolarity(GPIOB, DL_GPIO_PIN_15_EDGE_RISE);
+    DL_GPIO_setLowerPinsPolarity(GPIOB, DL_GPIO_PIN_15_EDGE_RISE |
+		DL_GPIO_PIN_14_EDGE_RISE);
     DL_GPIO_setUpperPinsPolarity(GPIOB, DL_GPIO_PIN_21_EDGE_RISE |
-		DL_GPIO_PIN_27_EDGE_RISE);
+		DL_GPIO_PIN_25_EDGE_RISE);
     DL_GPIO_clearInterruptStatus(GPIOB, GPIO_Button_PIN_0_PIN |
-		GPIO_MOTOR_QEI_PIN_FL_A_PIN |
-		GPIO_MOTOR_QEI_PIN_BL_A_PIN);
+		GPIO_MOTOR_QEI_PIN_FR_A_PIN |
+		GPIO_MOTOR_QEI_PIN_BR_A_PIN |
+		GPIO_IMU660RB_PIN_IMU660RB_INT1_PIN);
     DL_GPIO_enableInterrupt(GPIOB, GPIO_Button_PIN_0_PIN |
-		GPIO_MOTOR_QEI_PIN_FL_A_PIN |
-		GPIO_MOTOR_QEI_PIN_BL_A_PIN);
+		GPIO_MOTOR_QEI_PIN_FR_A_PIN |
+		GPIO_MOTOR_QEI_PIN_BR_A_PIN |
+		GPIO_IMU660RB_PIN_IMU660RB_INT1_PIN);
 
 }
 
@@ -285,7 +314,7 @@ SYSCONFIG_WEAK void SYSCFG_DL_SYSCTL_init(void)
     DL_SYSCTL_setULPCLKDivider(DL_SYSCTL_ULPCLK_DIV_1);
     DL_SYSCTL_setMCLKDivider(DL_SYSCTL_MCLK_DIVIDER_DISABLE);
     /* INT_GROUP1 Priority */
-    NVIC_SetPriority(GPIOA_INT_IRQn, 3);
+    NVIC_SetPriority(GPIOB_INT_IRQn, 3);
 
 }
 
@@ -397,20 +426,30 @@ SYSCONFIG_WEAK void SYSCFG_DL_TIMER_MS_SYS_init(void) {
 }
 
 
-static const DL_I2C_ClockConfig gI2C_0ClockConfig = {
+static const DL_I2C_ClockConfig gI2C_OLEDClockConfig = {
     .clockSel = DL_I2C_CLOCK_BUSCLK,
     .divideRatio = DL_I2C_CLOCK_DIVIDE_1,
 };
 
-SYSCONFIG_WEAK void SYSCFG_DL_I2C_0_init(void) {
+SYSCONFIG_WEAK void SYSCFG_DL_I2C_OLED_init(void) {
 
-    DL_I2C_setClockConfig(I2C_0_INST,
-        (DL_I2C_ClockConfig *) &gI2C_0ClockConfig);
-    DL_I2C_setAnalogGlitchFilterPulseWidth(I2C_0_INST,
+    DL_I2C_setClockConfig(I2C_OLED_INST,
+        (DL_I2C_ClockConfig *) &gI2C_OLEDClockConfig);
+    DL_I2C_setAnalogGlitchFilterPulseWidth(I2C_OLED_INST,
         DL_I2C_ANALOG_GLITCH_FILTER_WIDTH_50NS);
-    DL_I2C_enableAnalogGlitchFilter(I2C_0_INST);
+    DL_I2C_enableAnalogGlitchFilter(I2C_OLED_INST);
+
+    /* Configure Controller Mode */
+    DL_I2C_resetControllerTransfer(I2C_OLED_INST);
+    /* Set frequency to 400000 Hz*/
+    DL_I2C_setTimerPeriod(I2C_OLED_INST, 7);
+    DL_I2C_setControllerTXFIFOThreshold(I2C_OLED_INST, DL_I2C_TX_FIFO_LEVEL_EMPTY);
+    DL_I2C_setControllerRXFIFOThreshold(I2C_OLED_INST, DL_I2C_RX_FIFO_LEVEL_BYTES_1);
+    DL_I2C_enableControllerClockStretching(I2C_OLED_INST);
 
 
+    /* Enable module */
+    DL_I2C_enableController(I2C_OLED_INST);
 
 
 }
@@ -445,8 +484,15 @@ SYSCONFIG_WEAK void SYSCFG_DL_UART_OPENMV_init(void)
 
     /* Configure Interrupts */
     DL_UART_Main_enableInterrupt(UART_OPENMV_INST,
-                                 DL_UART_MAIN_INTERRUPT_RX);
+                                 DL_UART_MAIN_INTERRUPT_RX |
+                                 DL_UART_MAIN_INTERRUPT_RX_TIMEOUT_ERROR);
 
+    /* Configure DMA Receive Event */
+    DL_UART_Main_enableDMAReceiveEvent(UART_OPENMV_INST, DL_UART_DMA_INTERRUPT_RX);
+    /* Configure FIFOs */
+    DL_UART_Main_enableFIFOs(UART_OPENMV_INST);
+    DL_UART_Main_setRXFIFOThreshold(UART_OPENMV_INST, DL_UART_RX_FIFO_LEVEL_1_2_FULL);
+    DL_UART_Main_setTXFIFOThreshold(UART_OPENMV_INST, DL_UART_TX_FIFO_LEVEL_1_2_EMPTY);
 
     DL_UART_Main_setRXInterruptTimeout(UART_OPENMV_INST, 1);
 
@@ -495,6 +541,53 @@ SYSCONFIG_WEAK void SYSCFG_DL_UART_WIT_init(void)
     DL_UART_Main_enable(UART_WIT_INST);
 }
 
+static const DL_SPI_Config gSPI_IMU660RB_config = {
+    .mode        = DL_SPI_MODE_CONTROLLER,
+    .frameFormat = DL_SPI_FRAME_FORMAT_MOTO3_POL0_PHA0,
+    .parity      = DL_SPI_PARITY_NONE,
+    .dataSize    = DL_SPI_DATA_SIZE_8,
+    .bitOrder    = DL_SPI_BIT_ORDER_MSB_FIRST,
+};
+
+static const DL_SPI_ClockConfig gSPI_IMU660RB_clockConfig = {
+    .clockSel    = DL_SPI_CLOCK_BUSCLK,
+    .divideRatio = DL_SPI_CLOCK_DIVIDE_RATIO_1
+};
+
+SYSCONFIG_WEAK void SYSCFG_DL_SPI_IMU660RB_init(void) {
+    DL_SPI_setClockConfig(SPI_IMU660RB_INST, (DL_SPI_ClockConfig *) &gSPI_IMU660RB_clockConfig);
+
+    DL_SPI_init(SPI_IMU660RB_INST, (DL_SPI_Config *) &gSPI_IMU660RB_config);
+
+    /* Configure Controller mode */
+    /*
+     * Set the bit rate clock divider to generate the serial output clock
+     *     outputBitRate = (spiInputClock) / ((1 + SCR) * 2)
+     *     16000000 = (32000000)/((1 + 0) * 2)
+     */
+    DL_SPI_setBitRateSerialClockDivider(SPI_IMU660RB_INST, 0);
+    /* Set RX and TX FIFO threshold levels */
+    DL_SPI_setFIFOThreshold(SPI_IMU660RB_INST, DL_SPI_RX_FIFO_LEVEL_1_2_FULL, DL_SPI_TX_FIFO_LEVEL_1_2_EMPTY);
+
+    /* Enable module */
+    DL_SPI_enable(SPI_IMU660RB_INST);
+}
+
+static const DL_DMA_Config gDMA_K230Config = {
+    .transferMode   = DL_DMA_SINGLE_TRANSFER_MODE,
+    .extendedMode   = DL_DMA_NORMAL_MODE,
+    .destIncrement  = DL_DMA_ADDR_INCREMENT,
+    .srcIncrement   = DL_DMA_ADDR_UNCHANGED,
+    .destWidth      = DL_DMA_WIDTH_BYTE,
+    .srcWidth       = DL_DMA_WIDTH_BYTE,
+    .trigger        = UART_OPENMV_INST_DMA_TRIGGER,
+    .triggerType    = DL_DMA_TRIGGER_TYPE_EXTERNAL,
+};
+
+SYSCONFIG_WEAK void SYSCFG_DL_DMA_K230_init(void)
+{
+    DL_DMA_initChannel(DMA, DMA_K230_CHAN_ID , (DL_DMA_Config *) &gDMA_K230Config);
+}
 static const DL_DMA_Config gDMA_WITConfig = {
     .transferMode   = DL_DMA_SINGLE_TRANSFER_MODE,
     .extendedMode   = DL_DMA_NORMAL_MODE,
@@ -511,6 +604,7 @@ SYSCONFIG_WEAK void SYSCFG_DL_DMA_WIT_init(void)
     DL_DMA_initChannel(DMA, DMA_WIT_CHAN_ID , (DL_DMA_Config *) &gDMA_WITConfig);
 }
 SYSCONFIG_WEAK void SYSCFG_DL_DMA_init(void){
+    SYSCFG_DL_DMA_K230_init();
     SYSCFG_DL_DMA_WIT_init();
 }
 

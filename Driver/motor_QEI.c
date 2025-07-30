@@ -3,6 +3,7 @@
 #include "motor.h"
 #include "UART.h"
 #include "wit.h"
+#include "IMU660RB/imu660rb.h"
 volatile int32_t Front_Left_Count = 0;
 volatile int32_t Front_Right_Count = 0;
 volatile int32_t Back_Left_Count = 0;
@@ -23,9 +24,9 @@ int Start_Count=0;
 int a=0;
 void GROUP1_IRQHandler(void)
 {
-    uint32_t gpioA = DL_GPIO_getEnabledInterruptStatus(GPIOA, GPIO_MOTOR_QEI_PIN_FR_A_PIN | GPIO_MOTOR_QEI_PIN_BR_A_PIN);
-    uint32_t gpioB = DL_GPIO_getEnabledInterruptStatus(GPIOB, GPIO_MOTOR_QEI_PIN_FL_A_PIN | GPIO_MOTOR_QEI_PIN_BL_A_PIN|GPIO_Button_PIN_0_PIN);
-    if (gpioB & GPIO_MOTOR_QEI_PIN_FL_A_PIN) 
+    uint32_t gpioA = DL_GPIO_getEnabledInterruptStatus(GPIOA, GPIO_MOTOR_QEI_PIN_FL_A_PIN | GPIO_MOTOR_QEI_PIN_BL_A_PIN);
+    uint32_t gpioB = DL_GPIO_getEnabledInterruptStatus(GPIOB, GPIO_MOTOR_QEI_PIN_FR_A_PIN | GPIO_MOTOR_QEI_PIN_BR_A_PIN|GPIO_Button_PIN_0_PIN);
+    if (gpioA & GPIO_MOTOR_QEI_PIN_FL_A_PIN) 
     {
         if(DL_GPIO_readPins(GPIO_MOTOR_QEI_PIN_FL_B_PORT, GPIO_MOTOR_QEI_PIN_FL_B_PIN))
         {
@@ -40,7 +41,7 @@ void GROUP1_IRQHandler(void)
         DL_GPIO_clearInterruptStatus(GPIO_MOTOR_QEI_PIN_FL_A_PORT, GPIO_MOTOR_QEI_PIN_FL_A_PIN);
     }
 
-    if (gpioA & GPIO_MOTOR_QEI_PIN_FR_A_PIN) 
+    if (gpioB & GPIO_MOTOR_QEI_PIN_FR_A_PIN) 
     {
         if(DL_GPIO_readPins(GPIO_MOTOR_QEI_PIN_FR_B_PORT, GPIO_MOTOR_QEI_PIN_FR_B_PIN))
         {
@@ -55,22 +56,23 @@ void GROUP1_IRQHandler(void)
         DL_GPIO_clearInterruptStatus(GPIO_MOTOR_QEI_PIN_FR_A_PORT, GPIO_MOTOR_QEI_PIN_FR_A_PIN);
     }
     
-    if (gpioB & GPIO_MOTOR_QEI_PIN_BL_A_PIN) 
+    if (gpioA & GPIO_MOTOR_QEI_PIN_BL_A_PIN) 
     {
         if(DL_GPIO_readPins(GPIO_MOTOR_QEI_PIN_BL_B_PORT, GPIO_MOTOR_QEI_PIN_BL_B_PIN))
         {   
-            Back_Left_Count++;
-            QBL++;
+            
+            Back_Left_Count--;
+            QBL--;
         }
         else if(DL_GPIO_readPins(GPIO_MOTOR_QEI_PIN_BL_B_PORT, GPIO_MOTOR_QEI_PIN_BL_B_PIN)==0)
         {    
-            Back_Left_Count--;
-            QBL--;
+            Back_Left_Count++;
+            QBL++;
         }
         DL_GPIO_clearInterruptStatus(GPIO_MOTOR_QEI_PIN_BL_A_PORT, GPIO_MOTOR_QEI_PIN_BL_A_PIN);
     }
 
-    if (gpioA & GPIO_MOTOR_QEI_PIN_BR_A_PIN) 
+    if (gpioB & GPIO_MOTOR_QEI_PIN_BR_A_PIN) 
     {
         if(DL_GPIO_readPins(GPIO_MOTOR_QEI_PIN_BR_B_PORT, GPIO_MOTOR_QEI_PIN_BR_B_PIN))
         {    
@@ -90,6 +92,42 @@ void GROUP1_IRQHandler(void)
         YawInit(wit_data.yaw);
         DL_GPIO_clearInterruptStatus(GPIOB, GPIO_Button_PIN_0_PIN);
     }
+    // switch (DL_Interrupt_getPendingGroup(DL_INTERRUPT_GROUP_1)) {
+    //     #if defined GPIO_MULTIPLE_GPIOA_INT_IIDX
+    //     case GPIO_MULTIPLE_GPIOA_INT_IIDX:
+    //         switch (DL_GPIO_getPendingInterrupt(GPIOA))
+    //         {
+    //             #if (defined GPIO_IMU660RB_PIN_IMU660RB_INT1_PORT) && (GPIO_IMU660RB_PIN_IMU660RB_INT1_PORT == GPIOA)
+    //             case GPIO_IMU660RB_PIN_IMU660RB_INT1_IIDX:
+    //                 Read_IMU660RB();
+    //                 break;
+    //             #endif
+
+    //             default:
+    //                 break;
+    //         }
+    //     #endif
+
+    //     #if defined GPIO_MULTIPLE_GPIOB_INT_IIDX
+    //     case GPIO_MULTIPLE_GPIOB_INT_IIDX:
+    //         switch (DL_GPIO_getPendingInterrupt(GPIOB))
+    //         {
+    //             #if (defined GPIO_IMU660RB_PIN_IMU660RB_INT1_PORT) && (GPIO_IMU660RB_PIN_IMU660RB_INT1_PORT == GPIOB)
+    //             case GPIO_IMU660RB_PIN_IMU660RB_INT1_IIDX:
+    //                 Read_IMU660RB();
+    //                 break;
+    //             #endif
+
+    //             default:
+    //                 break;
+    //         }
+    //     #endif
+    //     #if defined GPIO_MOTOR_QEI_GPIOB_INT_IIDX
+    //         case GPIO_MOTOR_QEI_GPIOA_INT_IIDX:
+    //             Read_IMU660RB();
+    //             break;
+    //     #endif
+    // }
 }
 
 int Get_QEI_FL()

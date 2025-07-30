@@ -13,15 +13,17 @@ ORDERED_OBJS += \
 "./empty.o" \
 "./ti_msp_dl_config.o" \
 "./startup_mspm0g350x_ticlang.o" \
+"./Driver/Beep.o" \
 "./Driver/LED.o" \
 "./Driver/Timer.o" \
-"./Driver/UART.o" \
 "./Driver/XunJi.o" \
 "./Driver/motor.o" \
 "./Driver/motor_QEI.o" \
 "./Driver/pid.o" \
 "./Driver/task.o" \
-"./Driver/wit.o" \
+"./Peripheral/K230.o" \
+"./Peripheral/UART.o" \
+"./Peripheral/wit.o" \
 $(GEN_CMDS__FLAG) \
 -Wl,-ldevice.cmd.genlibs \
 -Wl,-llibc.a \
@@ -35,8 +37,10 @@ RMDIR := RMDIR /S/Q
 -include sources.mk
 -include subdir_vars.mk
 -include Driver/subdir_vars.mk
+-include Peripheral/subdir_vars.mk
 -include subdir_rules.mk
 -include Driver/subdir_rules.mk
+-include Peripheral/subdir_rules.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -154,8 +158,8 @@ dansaichongshengban.out: $(OBJS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(GEN_MISC_FILES__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "empty.o" "ti_msp_dl_config.o" "startup_mspm0g350x_ticlang.o" "Driver\LED.o" "Driver\Timer.o" "Driver\UART.o" "Driver\XunJi.o" "Driver\motor.o" "Driver\motor_QEI.o" "Driver\pid.o" "Driver\task.o" "Driver\wit.o" 
-	-$(RM) "empty.d" "ti_msp_dl_config.d" "startup_mspm0g350x_ticlang.d" "Driver\LED.d" "Driver\Timer.d" "Driver\UART.d" "Driver\XunJi.d" "Driver\motor.d" "Driver\motor_QEI.d" "Driver\pid.d" "Driver\task.d" "Driver\wit.d" 
+	-$(RM) "empty.o" "ti_msp_dl_config.o" "startup_mspm0g350x_ticlang.o" "Driver\Beep.o" "Driver\LED.o" "Driver\Timer.o" "Driver\XunJi.o" "Driver\motor.o" "Driver\motor_QEI.o" "Driver\pid.o" "Driver\task.o" "Peripheral\K230.o" "Peripheral\UART.o" "Peripheral\wit.o" 
+	-$(RM) "empty.d" "ti_msp_dl_config.d" "startup_mspm0g350x_ticlang.d" "Driver\Beep.d" "Driver\LED.d" "Driver\Timer.d" "Driver\XunJi.d" "Driver\motor.d" "Driver\motor_QEI.d" "Driver\pid.d" "Driver\task.d" "Peripheral\K230.d" "Peripheral\UART.d" "Peripheral\wit.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

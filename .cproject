@@ -36,12 +36,16 @@
                                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_3.2.compilerID.INCLUDE_PATH.1184657281" superClass="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_3.2.compilerID.INCLUDE_PATH" valueType="includePath">
                                     <listOptionValue value="${COM_TI_MSPM0_SDK_INCLUDE_PATH}"/>
                                     <listOptionValue value="${SYSCONFIG_TOOL_INCLUDE_PATH}"/>
-                                    <listOptionValue value="${PROJECT_ROOT}/Driver/OLED_Hardware_I2C"/>
                                     <listOptionValue value="${PROJECT_ROOT}/Driver"/>
+                                    <listOptionValue value="${PROJECT_ROOT}/Control_Car"/>
+                                    <listOptionValue value="${PROJECT_ROOT}/Peripheral/OLED_Hardware_I2C"/>
                                     <listOptionValue value="${PROJECT_ROOT}"/>
                                     <listOptionValue value="${PROJECT_ROOT}/${ConfigName}"/>
                                     <listOptionValue value="${COM_TI_MSPM0_SDK_INSTALL_DIR}/source/third_party/CMSIS/Core/Include"/>
                                     <listOptionValue value="${COM_TI_MSPM0_SDK_INSTALL_DIR}/source"/>
+                                    <listOptionValue value="${PROJECT_ROOT}/Peripheral"/>
+                                    <listOptionValue value="${PROJECT_ROOT}/Peripherial/IMU660RB"/>
+                                    <listOptionValue value="${PROJECT_ROOT}/Peripherial/IMU660RB/Fusion"/>
                                 </option>
                                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_3.2.compilerID.DEFINE.365522936" superClass="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_3.2.compilerID.DEFINE" valueType="definedSymbols">
                                     <listOptionValue value="${COM_TI_MSPM0_SDK_SYMBOLS}"/>
@@ -90,8 +94,50 @@
                             </tool>
                         </toolChain>
                     </folderInfo>
+                    <fileInfo id="com.ti.ccstudio.buildDefinitions.TMS470.Debug.136101104.Peripheral/UART.c" name="UART.c" rcbsApplicability="disable" resourcePath="Peripheral/UART.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_3.2.exe.compilerDebug.479868069.803215784">
+                        <tool id="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_3.2.exe.compilerDebug.479868069.803215784" name="Arm Compiler" superClass="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_3.2.exe.compilerDebug.479868069">
+                            <option id="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_3.2.compilerID.INCLUDE_PATH.412303074" superClass="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_3.2.compilerID.INCLUDE_PATH" valueType="includePath">
+                                <listOptionValue value="${COM_TI_MSPM0_SDK_INCLUDE_PATH}"/>
+                                <listOptionValue value="${SYSCONFIG_TOOL_INCLUDE_PATH}"/>
+                                <listOptionValue value="${PROJECT_ROOT}/Driver"/>
+                                <listOptionValue value="${PROJECT_ROOT}/Peripheral"/>
+                                <listOptionValue value="${PROJECT_ROOT}"/>
+                                <listOptionValue value="${PROJECT_ROOT}/${ConfigName}"/>
+                                <listOptionValue value="${COM_TI_MSPM0_SDK_INSTALL_DIR}/source/third_party/CMSIS/Core/Include"/>
+                                <listOptionValue value="${COM_TI_MSPM0_SDK_INSTALL_DIR}/source"/>
+                            </option>
+                        </tool>
+                    </fileInfo>
+                    <fileInfo id="com.ti.ccstudio.buildDefinitions.TMS470.Debug.136101104.Peripheral/wit.c" name="wit.c" rcbsApplicability="disable" resourcePath="Peripheral/wit.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_3.2.exe.compilerDebug.479868069.961503755">
+                        <tool id="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_3.2.exe.compilerDebug.479868069.961503755" name="Arm Compiler" superClass="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_3.2.exe.compilerDebug.479868069">
+                            <option id="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_3.2.compilerID.INCLUDE_PATH.368534731" superClass="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_3.2.compilerID.INCLUDE_PATH" valueType="includePath">
+                                <listOptionValue value="${COM_TI_MSPM0_SDK_INCLUDE_PATH}"/>
+                                <listOptionValue value="${SYSCONFIG_TOOL_INCLUDE_PATH}"/>
+                                <listOptionValue value="${PROJECT_ROOT}/Driver"/>
+                                <listOptionValue value="${PROJECT_ROOT}"/>
+                                <listOptionValue value="${PROJECT_ROOT}/${ConfigName}"/>
+                                <listOptionValue value="${COM_TI_MSPM0_SDK_INSTALL_DIR}/source/third_party/CMSIS/Core/Include"/>
+                                <listOptionValue value="${COM_TI_MSPM0_SDK_INSTALL_DIR}/source"/>
+                            </option>
+                        </tool>
+                    </fileInfo>
+                    <fileInfo id="com.ti.ccstudio.buildDefinitions.TMS470.Debug.136101104.Driver/Timer.c" name="Timer.c" rcbsApplicability="disable" resourcePath="Driver/Timer.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_3.2.exe.compilerDebug.479868069.750407719">
+                        <tool id="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_3.2.exe.compilerDebug.479868069.750407719" name="Arm Compiler" superClass="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_3.2.exe.compilerDebug.479868069">
+                            <option id="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_3.2.compilerID.INCLUDE_PATH.1624020341" superClass="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_3.2.compilerID.INCLUDE_PATH" valueType="includePath">
+                                <listOptionValue value="${COM_TI_MSPM0_SDK_INCLUDE_PATH}"/>
+                                <listOptionValue value="${SYSCONFIG_TOOL_INCLUDE_PATH}"/>
+                                <listOptionValue value="${PROJECT_ROOT}/Driver/OLED_Hardware_I2C"/>
+                                <listOptionValue value="${PROJECT_ROOT}/Driver"/>
+                                <listOptionValue value="${PROJECT_ROOT}/Peripheral"/>
+                                <listOptionValue value="${PROJECT_ROOT}"/>
+                                <listOptionValue value="${PROJECT_ROOT}/${ConfigName}"/>
+                                <listOptionValue value="${COM_TI_MSPM0_SDK_INSTALL_DIR}/source/third_party/CMSIS/Core/Include"/>
+                                <listOptionValue value="${COM_TI_MSPM0_SDK_INSTALL_DIR}/source"/>
+                            </option>
+                        </tool>
+                    </fileInfo>
                     <sourceEntries>
-                        <entry excluding="Driver/Beep.h|Driver/Beep.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+                        <entry excluding="Peripheral/IMU660RB|Peripheral/OLED_Hardware_I2C" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
                     </sourceEntries>
                 </configuration>
             </storageModule>

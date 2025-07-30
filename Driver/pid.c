@@ -13,12 +13,12 @@ void PID_Init(S_PID* PID,float Kp,float Ki,float Kd)
     PID->KD=Kd;
 }
 
-void PID_Init_Wheel(float kp,float ki,float kd)
+void PID_Init_Wheel()
 {
-    PID_Init(&PID_FL,kp,ki,kd);
-    PID_Init(&PID_FR,kp,ki,kd);
-    PID_Init(&PID_BL,kp,ki,kd);
-    PID_Init(&PID_BR,kp,ki,kd);
+    PID_Init(&PID_FL,KP_FL,KI_FL,KD_FL);
+    PID_Init(&PID_FR,KP_FR,KI_FR,KD_FR);
+    PID_Init(&PID_BL,KP_BL,KI_BL,KD_BL);
+    PID_Init(&PID_BR,KP_BR,KI_BR,KD_BR);
 }
 
 void PID_SetTaget(S_PID* PID,float taget)
@@ -139,8 +139,8 @@ int PID_Update_Yaw(S_PID* PID)
 {
     static float BianSu_C=0;
     PID->Last_Actual=PID->Actual;
-    PID->Actual=(wit_data.yaw/*-6.7*/ - wit_data.yawInit/*-43.5*/);
-    PID->Error=sin(PID->Target*3.1416/180)-sin(PID->Actual*3.1416/180);
+    PID->Actual=wit_data.yaw - wit_data.yawInit;
+    PID->Error=(sin(PID->Target*3.1416/180)-sin(PID->Actual*3.1416/180));
     //变速积分
     BianSu_C=1/(8*fabs(PID->Error)+1);
     PID->ErrorInt+= BianSu_C*PID->Error;

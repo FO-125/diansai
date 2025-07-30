@@ -75,7 +75,18 @@ Driver/motor_QEI.o: ../Driver/motor_QEI.c \
  C:/ti/mspm0_sdk_2_05_01_00/source/ti/driverlib/dl_wwdt.h \
  C:/ti/mspm0_sdk_2_05_01_00/source/ti/driverlib/m0p/dl_interrupt.h \
  C:/ti/mspm0_sdk_2_05_01_00/source/ti/driverlib/m0p/dl_systick.h \
- ../Driver/pid.h ../Driver/motor.h ../Driver/UART.h ../Driver/wit.h
+ ../Driver/pid.h ../Driver/motor.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/UART.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/wit.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/imu660rb.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/Fusion.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionAhrs.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionConvention.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionMath.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionAxes.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionCalibration.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionCompass.h \
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionOffset.h
 ti_msp_dl_config.h:
 C:/ti/mspm0_sdk_2_05_01_00/source/ti/devices/msp/msp.h:
 C:/ti/mspm0_sdk_2_05_01_00/source/ti/devices/DeviceFamily.h:
@@ -152,5 +163,14 @@ C:/ti/mspm0_sdk_2_05_01_00/source/ti/driverlib/m0p/dl_interrupt.h:
 C:/ti/mspm0_sdk_2_05_01_00/source/ti/driverlib/m0p/dl_systick.h:
 ../Driver/pid.h:
 ../Driver/motor.h:
-../Driver/UART.h:
-../Driver/wit.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/UART.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/wit.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/imu660rb.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/Fusion.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionAhrs.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionConvention.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionMath.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionAxes.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionCalibration.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionCompass.h:
+C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionOffset.h:

@@ -26,7 +26,7 @@ extern S_PID PID_BR;
 extern S_PID PID_Yaw;
 extern S_PID PID_Turn;
 void PID_Init(S_PID* PID,float Kp,float Ki,float Kd);
-void PID_Init_Wheel(float kp,float ki,float kd);
+void PID_Init_Wheel();
 void PID_SetTaget(S_PID* PID,float taget);
 void PID_Update_FL(S_PID* PID);
 void PID_Update_FR(S_PID* PID);
@@ -34,19 +34,19 @@ void PID_Update_BL(S_PID* PID);
 void PID_Update_BR(S_PID* PID);
 int PID_Update_Yaw(S_PID* PID);
 int PID_Update_Xunji(S_PID* PID);
-#define KP_FL 0.2
-#define KP_FR 0.2
-#define KP_BL 0.2
-#define KP_BR 0.2
-#define KI_FL 0.5
-#define KI_FR 0.5
-#define KI_BL 0.5
-#define KI_BR 0.5
-#define KD_FL 0.01
-#define KD_FR 0.01
-#define KD_BL 0.01
-#define KD_BR 0.01
-#define SinJiaoKP 100
+#define KP_FL 0.4
+#define KP_FR 0.4
+#define KP_BL 0.4
+#define KP_BR 0.4
+#define KI_FL 0
+#define KI_FR 0
+#define KI_BL 0
+#define KI_BR 0
+#define KD_FL 0.1
+#define KD_FR 0.1
+#define KD_BL 0.1
+#define KD_BR 0.1
+#define SinJiaoKP 200
 #define SinJiaoKI 0
 #define SinJiaoKD 0 
 #define XunJi_KP 25
