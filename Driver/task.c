@@ -3,20 +3,14 @@
 #include "lib.h"
 #include "motor.h"
 #include "pid.h"
-
+int Flag=0,i=0;
 void Task1()
 {
-    for(int j=0;j<5;j++)
-    {
-        for (int i = 0; i < 4; i++)
-        {
-            // 1. 沿直线行驶（使用八路灰度传感器PID控制）
-            XunJIPIDConcrol(1000);
-            
-            // 2. 转弯90度（使用Yaw角PID控制）
-            ControlSinAngle(90, 150, anticlockwise);
-        }
-    }
+   
+    XunJIPIDConcrol(6450);
+    while(i++<Flag)
+        XunJIPIDConcrol(6470);
+           
    
 }
 
@@ -42,11 +36,11 @@ void TASK_INIT()
     DL_Timer_startCounter(TIMER_MS_SYS_INST);
     //底层PID初始化
     PID_Init_Wheel();
-    
-    Control_LED(disable_LED);
+    LED_init();
     Control_Beep(disable_Beep);
     Motor_On();
-    Go_stright(0);
+    // Set_Speed(Wheel_FL,20);
+    // PID_SetTaget(&PID_FL,20);
 
     // PID_Init(&PID_Yaw,SinJiaoKP,SinJiaoKI,SinJiaoKD);
     // PID_SetTaget(&PID_Yaw, 0);
@@ -57,14 +51,14 @@ void TASK_INIT()
 void TASK_LOOP()
 {
     
-    if(Start_Count>0)
-    {
-        // XunJIPIDConcrol(1000);
-        Set_Speed(Wheel_FR, 20);
-        PID_SetTaget(&PID_FR,20);
-    }
+    if(Start_Count > 0)
+{
+    Task1();       // 执行任务
+    Start_Count = 0; // 执行后立即重置标志位，避免再次执行
+}
+
     
-    // printf("%f,%f,%f\n", wit_data.pitch, wit_data.roll, wit_data.yaw);
+    // printf("%f,%f,%f,%f\n", PID_FL.Target, PID_FL.Actual, PID_FL.Error,PID_FL.out);
  
 }
 

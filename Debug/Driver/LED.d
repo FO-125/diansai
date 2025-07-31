@@ -1,6 +1,6 @@
 # FIXED
 
-Driver/LED.o: ../Driver/LED.c ../Driver/lib.h \
+Driver/LED.o: ../Driver/LED.c ../Driver/LED.h ../Driver/lib.h \
  ti_msp_dl_config.h \
  C:/ti/mspm0_sdk_2_05_01_00/source/ti/devices/msp/msp.h \
  C:/ti/mspm0_sdk_2_05_01_00/source/ti/devices/DeviceFamily.h \
@@ -77,7 +77,7 @@ Driver/LED.o: ../Driver/LED.c ../Driver/lib.h \
  C:/ti/mspm0_sdk_2_05_01_00/source/ti/driverlib/m0p/dl_systick.h \
  ../Driver/pid.h ../Driver/motor.h \
  C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/UART.h \
- ../Driver/motor_QEI.h ../Driver/LED.h ../Driver/Beep.h \
+ ../Driver/motor_QEI.h ../Driver/Beep.h \
  C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/wit.h \
  C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/K230.h \
  ../Driver/Timer.h ../Driver/XunJi.h \
@@ -91,6 +91,7 @@ Driver/LED.o: ../Driver/LED.c ../Driver/lib.h \
  C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionCalibration.h \
  C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionCompass.h \
  C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionOffset.h
+../Driver/LED.h:
 ../Driver/lib.h:
 ti_msp_dl_config.h:
 C:/ti/mspm0_sdk_2_05_01_00/source/ti/devices/msp/msp.h:
@@ -170,7 +171,6 @@ C:/ti/mspm0_sdk_2_05_01_00/source/ti/driverlib/m0p/dl_systick.h:
 ../Driver/motor.h:
 C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/UART.h:
 ../Driver/motor_QEI.h:
-../Driver/LED.h:
 ../Driver/Beep.h:
 C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/wit.h:
 C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/K230.h:

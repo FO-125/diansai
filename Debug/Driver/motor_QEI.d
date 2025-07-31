@@ -1,6 +1,6 @@
 # FIXED
 
-Driver/motor_QEI.o: ../Driver/motor_QEI.c \
+Driver/motor_QEI.o: ../Driver/motor_QEI.c ../Driver/Timer.h \
  ti_msp_dl_config.h \
  C:/ti/mspm0_sdk_2_05_01_00/source/ti/devices/msp/msp.h \
  C:/ti/mspm0_sdk_2_05_01_00/source/ti/devices/DeviceFamily.h \
@@ -86,7 +86,9 @@ Driver/motor_QEI.o: ../Driver/motor_QEI.c \
  C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionAxes.h \
  C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionCalibration.h \
  C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionCompass.h \
- C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionOffset.h
+ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionOffset.h \
+ ../Driver/task.h ../Driver/LED.h
+../Driver/Timer.h:
 ti_msp_dl_config.h:
 C:/ti/mspm0_sdk_2_05_01_00/source/ti/devices/msp/msp.h:
 C:/ti/mspm0_sdk_2_05_01_00/source/ti/devices/DeviceFamily.h:
@@ -174,3 +176,5 @@ C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion
 C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionCalibration.h:
 C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionCompass.h:
 C:/Users/28042/workspace_ccstheia/dansaichongshengban/Peripheral/IMU660RB/Fusion/FusionOffset.h:
+../Driver/task.h:
+../Driver/LED.h:
