@@ -33,7 +33,6 @@ void TIMER_MS_SYS_INST_IRQHandler()
         PID_Update_BR(&PID_BR);
     }
     Xunji_Data_Run();
-    YawPWMout = PID_Update_Yaw(&PID_Yaw); 
     if(delay_count>0)
     {
         delay_count--;

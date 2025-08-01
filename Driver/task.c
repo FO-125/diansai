@@ -7,9 +7,9 @@ int Flag=0,i=0;
 void Task1()
 {
    
-    XunJIPIDConcrol(6450);
+    XunJIPIDConcrol(6800);
     while(i++<Flag)
-        XunJIPIDConcrol(6470);
+        XunJIPIDConcrol(6900);
            
    
 }

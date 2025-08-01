@@ -64,7 +64,7 @@ void PID_Update_FR(S_PID* PID)
     PID->Last_LastActual=PID->Last_Actual;
 
     PID->Last_Actual=PID->Actual;
-    (*PID).Actual=0.448*Get_QEI_FL()-1.56;
+    (*PID).Actual=0.448*Get_QEI_FR()-1.56;
     PID->Last_LastError=PID->LastError;
     PID->LastError=PID->Error;
     PID->Error=PID->Target-PID->Actual;
@@ -89,7 +89,7 @@ void PID_Update_BL(S_PID* PID)
 {
     PID->Last_LastActual=PID->Last_Actual;
     PID->Last_Actual=PID->Actual;
-    (*PID).Actual=0.448*Get_QEI_FL()-1.56;
+    (*PID).Actual=0.448*Get_QEI_BL()-1.56;
     PID->Last_LastError=PID->LastError;
     PID->LastError=PID->Error;
     PID->Error=PID->Target-PID->Actual;
@@ -114,7 +114,7 @@ void PID_Update_BR(S_PID* PID)
 {
     PID->Last_LastActual=PID->Last_Actual;
     PID->Last_Actual=PID->Actual;
-    (*PID).Actual=0.448*Get_QEI_FL()-1.56;
+    (*PID).Actual=0.448*Get_QEI_BR()-1.56;
     PID->Last_LastError=PID->LastError;
     PID->LastError=PID->Error;
     PID->Error=PID->Target-PID->Actual;

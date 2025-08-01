@@ -69,6 +69,7 @@ int GetXunJIErr(void)
     return data;
 }
 
+int data=0;
 void XunJIPIDConcrol(uint16_t EncoderNumber)
 {
     // CentrePWM=60;
@@ -120,11 +121,14 @@ void XunJIPIDConcrol(uint16_t EncoderNumber)
         PID_SetTaget(&PID_BR, PWMoutRight);
 
         Average_count = (QFL + QFR) / 2;
+        if(Average_count<EncoderNumber&&PWMoutLeft==0)
+        {
+            data=1;
+        }
 
         // Exit condition
         if(Average_count >= EncoderNumber/*Xunji.X7==1&&Xunji.X8==1*/)
         {
-            Control_Beep(enable_Beep);
             // Reset states
             Average_count = 0;
             QFL = 0;
@@ -139,7 +143,6 @@ void XunJIPIDConcrol(uint16_t EncoderNumber)
             PID_SetTaget(&PID_BR, 0);
             
             My_Delay_MS(500);
-            Control_Beep(disable_Beep);
             return;
         }
     }
